@@ -1,0 +1,85 @@
+.Menu li button:hover{
+    animation: border-rotate 5s forwards;
+}
+
+/* border animation */
+@keyframes border-rotate {
+    0% {
+        border-top-color: #222;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+
+    3% {
+        border-top-color: grey;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+
+    6% {
+        border-top-color: #222;
+        border-right-color: grey;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+
+    12% {
+        border-top-color: #222;
+        border-right-color: #222;
+        border-bottom-color: grey;
+        border-left-color: #222;
+    }
+
+    15% {
+        border-top-color: #222;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        border-left-color: grey;
+    }
+
+    18% {
+        border-top-color: #222;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+}
+
+@keyframes border-fill {
+    0% {
+        border-top-color: #222;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+
+    3% {
+        border-top-color: grey;
+        border-right-color: #222;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+
+    6% {
+        border-top-color: grey;
+        border-right-color: grey;
+        border-bottom-color: #222;
+        border-left-color: #222;
+    }
+
+    12% {
+        border-top-color: grey;
+        border-right-color: grey;
+        border-bottom-color: grey;
+        border-left-color: #222;
+    }
+
+    15% {
+        border-top-color: grey;
+        border-right-color: grey;
+        border-bottom-color: grey;
+        border-left-color: grey;
+    }
+}
