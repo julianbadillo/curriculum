@@ -1,7 +1,17 @@
 body{
+    font-family: 'Century Gothic', roboto, sans-serif;
+}
+
+.dark{
     background-color: black;
     color: silver;
-    font-family: 'Century Gothic', roboto, sans-serif;
+    transition: 0.5s;
+}
+
+.light{
+    background-color: silver;
+    color: #222;
+    transition: 0.5s;
 }
 
 #root{
@@ -29,18 +39,21 @@ hr{
 }
 
 .Menu {
-    list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
 }
-.Menu > li {
+.Menu > div {
     float: left;
 }
-.Menu > li > a, .Menu > li > button {
+
+
+
+.light .Menu > div > a, .light .Menu > div > button {
     display: block;
-    color: silver;
-    background: black;
+    color: #222;
+    background-color: silver;
     text-align: center;
     padding: 16px;
     text-decoration: none;
@@ -50,6 +63,38 @@ hr{
     font-size: inherit;
     font-family: inherit;
     margin: 10px 5px;
+    transition: 0.7s;
+}
+
+.dark .Menu > div > a, .dark .Menu > div > button {
+    display: block;
+    color: silver;
+    background-color: black;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    border: 1px solid #222;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    margin: 10px 5px;
+    transition: 0.7s;
+}
+
+.dark .Menu > div > button.darkFlip {
+    background-image: url('sun_moon_wh.png');
+    background-size: 100%;
+    background-position: center;
+    opacity: 0.7;
+    border: none;
+}
+.light .Menu > div > button.darkFlip {
+    background-image: url('sun_moon.png');
+    background-size: 100%;
+    background-position: center;
+    opacity: 0.7;
+    border: none;
 }
 
 .Footer{
@@ -63,36 +108,39 @@ hr{
 }
 
 /* Table divs */
-.divTable{
+.table{
 	display: table;
 	width: 100%;
+    transition: 1s;
 }
-.divTableRow {
+.tr {
 	display: table-row;
 }
-.divTableHeading {
+.thead {
 	display: table-header-group;
 }
-.divTableCell, .divTableHead {
+.td, .th {
 	border: 1px solid #222;
 	display: table-cell;
 	padding: 3px 10px;
 }
-
-.divTableHead{
+.th {
     font-weight: bold;
     text-align: center;
 }
-.divTableHeading {
+.thead {
 	display: table-header-group;
 	font-weight: bold;
 }
-.divTableFoot {
+.tfoot {
 	display: table-footer-group;
 	font-weight: bold;
 }
-.divTableBody {
+.tbody {
 	display: table-row-group;
+}
+.nowrap {
+    white-space: nowrap;
 }
 
 /* Card containers */
@@ -107,7 +155,7 @@ hr{
     border: 1px solid #222;
     border-radius: 10px;
     margin: 1em;
-    max-width: 35em;
+    width: 500px;
 }
 
 .card h3 {
@@ -126,21 +174,37 @@ hr{
     grid-column: 1 / span 12;
 }
 
-/* Experience */
-.Experience h3{
+/* Buttons */
+button.expandButton{
+    background: none;
+    font-size: large;
+    color: inherit;
     cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #222;
+    border-radius: 10px;
+}
+button.expandButton > div {
+    transform: translate(-15%, -20%);
+    margin: 0;
+    padding: 0;
 }
 
-/* skills */
 
-.Skills h3{
+/* Experience */
+.Experience h3 {
     margin-bottom: 0.5em;
     cursor: pointer;
 }
 
+/* skills */
+.Skills h3{
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
 .Skills .items{
     display: inline-block;
-
 }
 .Skills .items .item{
     border: 1px solid #222;
@@ -150,5 +214,16 @@ hr{
     padding-right: 0.5em;
     line-height: 2.0em;
     float: left;
-    
+}
+
+/* education */
+.Education h3 {
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+
+/* awards */
+.Awards h3 {
+    margin-bottom: 0.5em;
+    cursor: pointer;
 }
