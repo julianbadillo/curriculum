@@ -28,7 +28,8 @@ export class Education extends React.Component{
         const education = this.state.education;
         return <div className="Education slideDown">
                 {education.map((t, i) => (<div key={i} className="card">
-                                            <b>{t.level} {t.degree}</b>: {t.institution}
+                                            <b>{t.level} {t.degree}</b>
+                                            <div>{t.institution}</div>
                                             <div>{t.years}</div>
                                             <br/>
                                         </div>))}

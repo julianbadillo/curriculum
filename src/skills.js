@@ -21,7 +21,7 @@ const skills = [
         items: [
             {name: "SQL Sever", level: "5"},
             {name: "Oracle DB", level: "4"},
-            {name: "MySql", level: "3"},
+            {name: "MySql/MariaDB", level: "3"},
             {name: "PostgreSQL", level: "3"},
             {name: "CouchDB", level: "3"},
             {name: "LiteDB", level: "3"},
@@ -31,20 +31,23 @@ const skills = [
         skill: "Web Frameworks",
         items: [
             {name: "ASP MVC", level: "5"},
-            {name: "J2EE / JEE", level: "4"},
+            {name: "Node.js/Express", level: "4"},
+            {name: "J2EE/JEE", level: "4"},
             {name: "Ruby on Rails", level: "2"},
             {name: "Django", level: "2"},
-            {name: "Node.js / Express", level: "2"},
         ]
     },
     {
         skill: "Miscellaneous",
         items: [
-            {name: "JQuery", level: "5"},
+            
+            {name: "React", level: "5"},
             {name: "CSS", level: "4"},
-            {name: "Git", level: "4"},
+            {name: "JQuery", level: "4"},
+            {name: "Git", level: "3"},
+            {name: "Docker", level: "2"},
             {name: "Puppet", level: "2"},
-            {name: "React", level: "3"},
+            
         ]
     },
 ];

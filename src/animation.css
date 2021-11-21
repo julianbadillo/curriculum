@@ -1,4 +1,4 @@
-.Menu li button:hover{
+.Menu > div > button:hover{
     animation: border-rotate 5s forwards;
 }
 

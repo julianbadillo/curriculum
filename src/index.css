@@ -27,6 +27,12 @@ hr{
     border: 1px dashed #222;
 }
 
+.dark a, .dark a:visited {
+    color: rgb(100, 143, 36);
+}
+.light a, .light a:visited{
+    color: rgb(61, 87, 24);
+}
 .PageHead{
     display: grid;
     grid-template-columns: 1fr 100px;
@@ -48,9 +54,7 @@ hr{
     float: left;
 }
 
-
-
-.light .Menu > div > a, .light .Menu > div > button {
+.light .Menu > div > button {
     display: block;
     color: #222;
     background-color: silver;
@@ -66,7 +70,12 @@ hr{
     transition: 0.7s;
 }
 
-.dark .Menu > div > a, .dark .Menu > div > button {
+.light .Menu > div > button:active {
+    background-color: #333;
+    transition: 0.7s;
+}
+
+.dark .Menu > div > button {
     display: block;
     color: silver;
     background-color: black;
@@ -79,6 +88,11 @@ hr{
     font-size: inherit;
     font-family: inherit;
     margin: 10px 5px;
+    transition: 0.7s;
+}
+
+.dark .Menu > div > button:active {
+    background-color: gray;
     transition: 0.7s;
 }
 
@@ -190,7 +204,10 @@ button.expandButton > div {
     margin: 0;
     padding: 0;
 }
-
+button.expandButton:active {
+    background-color: gray;
+    transition: 0.7s;
+}
 
 /* Experience */
 .Experience h3 {
