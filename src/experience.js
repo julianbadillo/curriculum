@@ -1,8 +1,21 @@
 import React from 'react';
 const jobs = [
     {
-        from: 'Jan 2021',
+        from: 'March 2022',
         until: 'Now',
+        company: 'NuMat Technology, Inc.',
+        webpage: 'http://numat-tech.com/',
+        division: 'IT',
+        city: 'Skokie, IL',
+        position: 'Senior Software Engineer',
+        references: ['Patrick Fuller pat@numat-tech.com'],
+        keywords: ['web developer', 'fullstack', 'Django', 'Python', 'Azure Pipelines'],
+        tasks: ['Maintain software for chemical research and processing'],
+        accomplishments: [],
+    },
+    {
+        from: 'Jan 2021',
+        until: 'Feb 2022',
         company: 'Fermi National Accelerator Laboratory (Fermilab)',
         webpage: 'http://fnal.gov/',
         division: 'Accelerator Division',
@@ -12,7 +25,8 @@ const jobs = [
         keywords: ['web developer', 'fullstack', 'React', 'Node.js', 'GraphQL'],
         tasks: ['Do use case analysis for accelerator controls modernization.',
             'Develop software for accelerator controls.'],
-        accomplishments: [],
+        accomplishments: ['Use cases and functional requirements for new control system.',
+                        'Refurbish of physical key inventory tracking tool.'],
     },
     {
         from: 'Jan 2016',
