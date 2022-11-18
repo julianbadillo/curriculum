@@ -29,6 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     # - run: npm test
+  # Deploy job
   deploy:
     # Add a dependency to the build job
     needs: build
@@ -37,11 +38,15 @@ jobs:
     permissions:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
