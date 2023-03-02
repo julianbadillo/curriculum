@@ -1,10 +1,21 @@
 body{
-    font-family: 'Century Gothic', roboto, sans-serif;
+    /* font-family: 'Century Gothic', roboto, sans-serif; */
+    font-family: 'Poppins', sans-serif;
 }
-
+h1 {
+    font-size: 3em;
+    margin-bottom: -0.3em;
+}
+h2 {
+    font-size: 1.2em;
+}
+p{
+    font-size: 1em;
+    font-weight:300;
+}
 .dark{
-    background-color: black;
-    color: silver;
+    background-color: #2F4C5C;
+    color: white;
     transition: 0.5s;
 }
 
@@ -24,7 +35,7 @@ body{
 }
 
 hr{
-    border: 1px dashed #222;
+    border: 0.5px dashed silver;
 }
 
 .dark a, .dark a:visited {
@@ -68,6 +79,7 @@ hr{
     font-family: inherit;
     margin: 10px 5px;
     transition: 0.7s;
+    width: 100px;
 }
 
 .light .Menu > div > button:active {
@@ -77,18 +89,19 @@ hr{
 
 .dark .Menu > div > button {
     display: block;
-    color: silver;
-    background-color: black;
+    color: white;
+    background-color: #2F4C5C;
     text-align: center;
     padding: 16px;
     text-decoration: none;
-    border: 1px solid #222;
+    border: 1px solid silver;
     border-radius: 10px;
     cursor: pointer;
     font-size: inherit;
     font-family: inherit;
     margin: 10px 5px;
     transition: 0.7s;
+    width: 100px;
 }
 
 .dark .Menu > div > button:active {
@@ -117,6 +130,9 @@ hr{
 
 .Footer > div {
     text-align: center;
+}
+.Footer > div img {
+    width: 30px;
 }
 
 /* Table divs */
@@ -164,7 +180,7 @@ hr{
     flex-direction: column;
     padding: 1rem;
     justify-content: space-between;
-    border: 1px solid #222;
+    border: 1px solid silver;
     border-radius: 10px;
     margin: 1em;
     width: 500px;
