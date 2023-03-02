@@ -6,6 +6,12 @@ My personal web page.
 
 - React 17+
 
+## Getting Started
+
+```sh
+npm start
+```
+
 ## Run
 
 ```bash
