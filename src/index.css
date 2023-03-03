@@ -1,56 +1,73 @@
-body{
-    /* font-family: 'Century Gothic', roboto, sans-serif; */
-    font-family: 'Poppins', sans-serif;
+body {
+    font-family: 'Arial', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: "neue-kabel",sans-serif; */
 }
+
 h1 {
     font-size: 3em;
     margin-bottom: -0.3em;
 }
+
 h2 {
     font-size: 1.2em;
+    
 }
-p{
+
+.light h2{
+    color: #B0C981;
+}
+.dark h2{
+    color: #E2F0A6;
+}
+
+p {
     font-size: 1em;
-    font-weight:300;
+    font-weight: 300;
 }
-.dark{
+
+.dark {
     background-color: #2F4C5C;
     color: white;
     transition: 0.5s;
 }
 
-.light{
-    background-color: silver;
+.light {
+    background-color: #F4F4F4;
     color: #222;
     transition: 0.5s;
 }
 
-#root{
+#root {
     display: grid;
     place-items: center;
 }
 
-.CVDisplay{
+.CVDisplay {
     max-width: 800px;
 }
 
-hr{
+hr {
     border: 0.5px dashed silver;
 }
 
-.dark a, .dark a:visited {
+.dark a,
+.dark a:visited {
     color: rgb(100, 143, 36);
 }
-.light a, .light a:visited{
+
+.light a,
+.light a:visited {
     color: rgb(61, 87, 24);
 }
-.PageHead{
+
+.PageHead {
     display: grid;
     grid-template-columns: 1fr 100px;
     grid-template-rows: 1fr 2em;
 }
 
-.PageHead .Logo{
+.PageHead .Logo {
     grid-column: 2 / 2;
     grid-row: 1 / 2;
 }
@@ -61,126 +78,144 @@ hr{
     display: grid;
     grid-template-columns: repeat(5, auto);
 }
-.Menu > div {
+
+.Menu>div {
     float: left;
 }
 
-.light .Menu > div > button {
-    display: block;
-    color: #222;
-    background-color: silver;
-    text-align: center;
+.Menu>div>button {
+    display: grid;
+    place-items: center;
     padding: 16px;
-    text-decoration: none;
-    border: 1px solid #222;
     border-radius: 10px;
+    text-decoration: none;
+    border: none;
     cursor: pointer;
     font-size: inherit;
     font-family: inherit;
     margin: 10px 5px;
-    transition: 0.7s;
-    width: 100px;
 }
 
-.light .Menu > div > button:active {
+.light .Menu>div>button {
+    color: #222;
+    background-color: #F4F4F4;
+    text-align: center;
+    /* border: 1px solid #222; */
+    transition: 0.7s;
+}
+
+.light .Menu>div>button:active {
     background-color: #333;
     transition: 0.7s;
 }
 
-.dark .Menu > div > button {
-    display: block;
-    color: white;
+.dark .Menu>div>button {
+    color: #E2F0A6;
     background-color: #2F4C5C;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    border: 1px solid silver;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: inherit;
-    font-family: inherit;
-    margin: 10px 5px;
     transition: 0.7s;
-    width: 100px;
 }
 
-.dark .Menu > div > button:active {
+.dark .Menu>div>button:active {
     background-color: gray;
     transition: 0.7s;
 }
 
-.dark .Menu > div > button.darkFlip {
-    background: url('sun_moon_wh.png') center no-repeat;
-    background-size: 100%;
-    opacity: 0.7;
-    border: none;
+.Menu>div>button>img {
+    width: 5em;
+    transition: 0.7s;
 }
-.light .Menu > div > button.darkFlip {
-    background: url('sun_moon.png') center no-repeat;
-    background-size: 100%;
+
+.Menu>div>button.selected>img {
+    width: 8em;
+    transition: 0.7s;
+}
+
+.Menu>div>button.darkFlip {
     opacity: 0.7;
     border: none;
 }
 
-.Footer{
+.dark .Menu>div>button.darkFlip {
+    background: url('sun_moon_wh.png') center no-repeat;
+    background-size: 100%;
+
+}
+
+.light .Menu>div>button.darkFlip {
+    background: url('sun_moon.png') center no-repeat;
+    background-size: 100%;
+}
+
+.Footer {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
-.Footer > div {
+.Footer>div {
     text-align: center;
 }
-.Footer > div img {
+
+.Footer>div img {
     width: 30px;
 }
 
 /* Table divs */
-.table{
-	display: table;
-	width: 100%;
+.table {
+    display: table;
+    width: 100%;
     transition: 1s;
 }
+
 .tr {
-	display: table-row;
+    display: table-row;
 }
+
 .thead {
-	display: table-header-group;
+    display: table-header-group;
 }
-.td, .th {
-	border: 1px solid #222;
-	display: table-cell;
-	padding: 3px 10px;
+
+.td,
+.th {
+    border: 1px solid #222;
+    display: table-cell;
+    padding: 3px 10px;
 }
+
 .th {
     font-weight: bold;
     text-align: center;
 }
+
 .thead {
-	display: table-header-group;
-	font-weight: bold;
+    display: table-header-group;
+    font-weight: bold;
 }
+
 .tfoot {
-	display: table-footer-group;
-	font-weight: bold;
+    display: table-footer-group;
+    font-weight: bold;
 }
+
 .tbody {
-	display: table-row-group;
+    display: table-row-group;
 }
+
 .nowrap {
     white-space: nowrap;
 }
 
 /* Card containers */
-.cardContainer{
+.cardContainer {
     display: grid;
 }
+
 .card {
     display: flex;
     flex-direction: column;
     padding: 1rem;
     justify-content: space-between;
-    border: 1px solid silver;
+    border: 1px solid darkslategray;
     border-radius: 10px;
     margin: 1em;
     width: 500px;
@@ -189,21 +224,23 @@ hr{
 .card h3 {
     margin: 0;
 }
+
 /* 12 span */
 .spanContainer {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
+
 .span3 {
     grid-column: 1 / span 4;
 }
 
-.span12{
+.span12 {
     grid-column: 1 / span 12;
 }
 
 /* Buttons */
-button.expandButton{
+button.expandButton {
     background: none;
     font-size: large;
     color: inherit;
@@ -213,11 +250,13 @@ button.expandButton{
     border: 1px solid #222;
     border-radius: 10px;
 }
-button.expandButton > div {
+
+button.expandButton>div {
     transform: translate(-15%, -20%);
     margin: 0;
     padding: 0;
 }
+
 button.expandButton:active {
     background-color: gray;
     transition: 0.7s;
@@ -226,10 +265,11 @@ button.expandButton:active {
 /* Experience */
 
 /* skills */
-.Skills .items{
+.Skills .items {
     display: inline-block;
 }
-.Skills .items .item{
+
+.Skills .items .item {
     border: 1px solid #222;
     border-radius: 3px;
     margin: 0.2em;

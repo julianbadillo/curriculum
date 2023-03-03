@@ -30,19 +30,19 @@ class CVDisplay extends React.Component {
     const options = [
       {
         label: 'Education',
-        icon: 'education.svg',
+        icon: 'education',
       },
       {
         label: 'Experience',
-        icon: 'experience.svg',
+        icon: 'experience',
       },
       {
         label: 'Skills',
-        icon: 'skills.svg',
+        icon: 'skills',
       },
       {
         label: 'Awards',
-        icon: 'awards.svg',
+        icon: 'awards',
       },
     ];
     const { dark, content } = this.state;
@@ -55,6 +55,7 @@ class CVDisplay extends React.Component {
           options={options}
           dark={dark}
           flipDark={this.flipDark}
+          content={content}
         />
         <CVContent content={content} dark={dark} />
         <Footer />
@@ -79,7 +80,9 @@ function PageHead() {
   );
 }
 
-function Menu({ options, handleMenuOptionClick, flipDark }) {
+function Menu({
+  options, handleMenuOptionClick, dark, flipDark, content,
+}) {
   return (
     <div>
       <div className="Menu">
@@ -89,6 +92,8 @@ function Menu({ options, handleMenuOptionClick, flipDark }) {
             key={option.label}
             icon={option.icon}
             handleMenuOptionClick={handleMenuOptionClick}
+            dark={dark}
+            selected={content === option.label}
           />
         ))}
         <div>
@@ -99,12 +104,16 @@ function Menu({ options, handleMenuOptionClick, flipDark }) {
   );
 }
 
-function MenuOption({ handleMenuOptionClick, optionName, icon }) {
+function MenuOption({
+  handleMenuOptionClick, optionName, dark, icon, selected,
+}) {
+  const className = selected ? 'selected' : '';
+  const iconFile = `${icon}${!dark ? 'light' : ''}.svg`;
   return (
     <div>
-      <button onClick={() => handleMenuOptionClick(optionName)} type="button">
-        <img src={icon} alt="icon" />
-        {optionName}
+      <button onClick={() => handleMenuOptionClick(optionName)} type="button" className={className}>
+        <img src={iconFile} alt="icon" />
+        <span>{optionName}</span>
       </button>
     </div>
   );
