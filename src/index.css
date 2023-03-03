@@ -1,7 +1,7 @@
 body {
-    font-family: 'Arial', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     /* font-family: 'Poppins', sans-serif; */
-    /* font-family: "neue-kabel",sans-serif; */
+    font-family: "neue-kabel",sans-serif;
 }
 
 h1 {
@@ -9,9 +9,12 @@ h1 {
     margin-bottom: -0.3em;
 }
 
+.light h1{
+    color: #2F4C5C
+}
+
 h2 {
-    font-size: 1.2em;
-    
+    font-size: 1.2em;   
 }
 
 .light h2{
@@ -72,6 +75,14 @@ hr {
     grid-row: 1 / 2;
 }
 
+/* Hide / show different icons depending on the mode */
+.dark .ImgLight {
+    display: none;
+}
+.light .ImgDark {
+    display: none;
+}
+
 .Menu {
     margin: 0;
     padding: 0;
@@ -97,7 +108,7 @@ hr {
 }
 
 .light .Menu>div>button {
-    color: #222;
+    color: #B0C981;
     background-color: #F4F4F4;
     text-align: center;
     /* border: 1px solid #222; */

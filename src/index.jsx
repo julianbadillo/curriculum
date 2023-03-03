@@ -75,7 +75,10 @@ function PageHead() {
       <div>
         <div>&emsp;</div>
       </div>
-      <div className="Logo"><img src="jb.svg" alt="jb" /></div>
+      <div className="Logo">
+        <img className="ImgDark" src="jb.svg" alt="jb" />
+        <img className="ImgLight" src="jblight.svg" alt="jb" />
+      </div>
     </div>
   );
 }
@@ -105,14 +108,14 @@ function Menu({
 }
 
 function MenuOption({
-  handleMenuOptionClick, optionName, dark, icon, selected,
+  handleMenuOptionClick, optionName, icon, selected,
 }) {
   const className = selected ? 'selected' : '';
-  const iconFile = `${icon}${!dark ? 'light' : ''}.svg`;
   return (
     <div>
       <button onClick={() => handleMenuOptionClick(optionName)} type="button" className={className}>
-        <img src={iconFile} alt="icon" />
+        <img src={`${icon}.svg`} className="ImgDark" alt="icon" />
+        <img src={`${icon}light.svg`} className="ImgLight" alt="icon" />
         <span>{optionName}</span>
       </button>
     </div>
@@ -136,8 +139,20 @@ function CVContent({ content }) {
 function Footer() {
   return (
     <div className="Footer">
-      <div><a href="https://www.linkedin.com/in/juli4nb4dillo/"><img src="in.svg" alt="Linked In" /></a></div>
-      <div><a href="https://github.com/julianbadillo"><img src="github.svg" alt="GitHub" /></a></div>
+      <div>
+        <a href="https://www.linkedin.com/in/juli4nb4dillo/">
+          <img src="in.svg" alt="Linked In" className="ImgDark" />
+          <img src="inlight.svg" alt="Linked In" className="ImgLight" />
+        </a>
+
+      </div>
+      <div>
+        <a href="https://github.com/julianbadillo">
+          <img src="github.svg" alt="GitHub" className="ImgDark" />
+          <img src="githublight.svg" alt="GitHub" className="ImgLight" />
+        </a>
+
+      </div>
     </div>
   );
 }
