@@ -27,7 +27,24 @@ class CVDisplay extends React.Component {
   };
 
   render() {
-    const options = ['Education', 'Experience', 'Skills', 'Awards'];
+    const options = [
+      {
+        label: 'Education',
+        icon: 'education.svg',
+      },
+      {
+        label: 'Experience',
+        icon: 'experience.svg',
+      },
+      {
+        label: 'Skills',
+        icon: 'skills.svg',
+      },
+      {
+        label: 'Awards',
+        icon: 'awards.svg',
+      },
+    ];
     const { dark, content } = this.state;
     document.body.className = dark ? 'dark' : 'light';
     return (
@@ -39,7 +56,6 @@ class CVDisplay extends React.Component {
           dark={dark}
           flipDark={this.flipDark}
         />
-        <hr />
         <CVContent content={content} dark={dark} />
         <Footer />
       </div>
@@ -52,7 +68,6 @@ function PageHead() {
     <div className="PageHead">
       <div>
         <h1>Julian Badillo</h1>
-        <hr />
         <h2>Software Engineer</h2>
         <p>A successful day: when someone is grateful I&lsquo;m working by their side.</p>
       </div>
@@ -68,10 +83,11 @@ function Menu({ options, handleMenuOptionClick, flipDark }) {
   return (
     <div>
       <div className="Menu">
-        {options.map((mo, i) => (
+        {options.map((option) => (
           <MenuOption
-            optionName={mo}
-            key={i}
+            optionName={option.label}
+            key={option.label}
+            icon={option.icon}
             handleMenuOptionClick={handleMenuOptionClick}
           />
         ))}
@@ -83,10 +99,11 @@ function Menu({ options, handleMenuOptionClick, flipDark }) {
   );
 }
 
-function MenuOption({ handleMenuOptionClick, optionName }) {
+function MenuOption({ handleMenuOptionClick, optionName, icon }) {
   return (
     <div>
       <button onClick={() => handleMenuOptionClick(optionName)} type="button">
+        <img src={icon} alt="icon" />
         {optionName}
       </button>
     </div>
@@ -110,8 +127,8 @@ function CVContent({ content }) {
 function Footer() {
   return (
     <div className="Footer">
-      <div><a href="https://www.linkedin.com/in/juli4nb4dillo/">LinkedIn</a></div>
-      <div><a href="https://github.com/julianbadillo">GitHub</a></div>
+      <div><a href="https://www.linkedin.com/in/juli4nb4dillo/"><img src="in.svg" alt="Linked In" /></a></div>
+      <div><a href="https://github.com/julianbadillo"><img src="github.svg" alt="GitHub" /></a></div>
     </div>
   );
 }
