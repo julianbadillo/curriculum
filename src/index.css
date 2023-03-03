@@ -18,7 +18,7 @@ h2 {
 }
 
 .light h2{
-    color: #B0C981;
+    color: #A5AC6E;
 }
 .dark h2{
     color: #E2F0A6;
@@ -47,7 +47,8 @@ p {
 }
 
 .CVDisplay {
-    max-width: 800px;
+    /* border: 1px solid black; */
+    padding: 1em;
 }
 
 hr {
@@ -96,6 +97,7 @@ hr {
 
 .Menu>div>button {
     display: grid;
+    font-weight: bold;
     place-items: center;
     padding: 16px;
     border-radius: 10px;
@@ -108,7 +110,7 @@ hr {
 }
 
 .light .Menu>div>button {
-    color: #B0C981;
+    color: #A5AC6E;
     background-color: #F4F4F4;
     text-align: center;
     /* border: 1px solid #222; */
@@ -132,12 +134,12 @@ hr {
 }
 
 .Menu>div>button>img {
-    width: 5em;
+    width: 7em;
     transition: 0.7s;
 }
 
 .Menu>div>button.selected>img {
-    width: 8em;
+    width: 10em;
     transition: 0.7s;
 }
 
@@ -155,6 +157,12 @@ hr {
 .light .Menu>div>button.darkFlip {
     background: url('sun_moon.png') center no-repeat;
     background-size: 100%;
+}
+
+.CVContent {
+    /* border: 1px solid black; */
+    display: grid;
+    align-items: center;
 }
 
 .Footer {
@@ -271,6 +279,10 @@ button.expandButton>div {
 button.expandButton:active {
     background-color: gray;
     transition: 0.7s;
+}
+
+.Education {
+    /* border: 1px solid red; */
 }
 
 /* Experience */

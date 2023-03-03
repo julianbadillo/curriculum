@@ -132,7 +132,7 @@ function CVContent({ content }) {
   } else if (content === 'Awards') {
     moreContent = <Awards />;
   }
-  return <div>{moreContent}</div>;
+  return <div className="CVContent">{moreContent}</div>;
 }
 
 function Footer() {
