@@ -18,7 +18,8 @@ class CVDisplay extends React.Component {
   }
 
   handleMenuOptionClick = (opt) => {
-    this.setState({ content: opt });
+    const { content } = this.state;
+    this.setState({ content: content === opt ? null : opt });
   };
 
   flipDark = () => {
@@ -53,11 +54,10 @@ class CVDisplay extends React.Component {
         <Menu
           handleMenuOptionClick={this.handleMenuOptionClick}
           options={options}
-          dark={dark}
           flipDark={this.flipDark}
           content={content}
         />
-        <CVContent content={content} dark={dark} />
+        <CVContent content={content} />
         <Footer />
       </div>
     );
@@ -84,7 +84,7 @@ function PageHead() {
 }
 
 function Menu({
-  options, handleMenuOptionClick, dark, flipDark, content,
+  options, handleMenuOptionClick, flipDark, content,
 }) {
   return (
     <div>
@@ -95,7 +95,6 @@ function Menu({
             key={option.label}
             icon={option.icon}
             handleMenuOptionClick={handleMenuOptionClick}
-            dark={dark}
             selected={content === option.label}
           />
         ))}
@@ -151,7 +150,6 @@ function Footer() {
           <img src="github.svg" alt="GitHub" className="ImgDark" />
           <img src="githublight.svg" alt="GitHub" className="ImgLight" />
         </a>
-
       </div>
     </div>
   );

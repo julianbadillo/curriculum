@@ -19,7 +19,10 @@ const jobs = [
     position: 'Senior Software Engineer',
     references: ['Patrick Fuller pat@numat-tech.com'],
     keywords: ['web developer', 'fullstack', 'Django', 'Python', 'Azure Pipelines'],
-    tasks: ['Maintain software for chemical research and processing'],
+    tasks: [
+      'Maintain software for chemical research and processing',
+      'REST API integration of R&D solutions',
+    ],
     accomplishments: [],
   },
   {
@@ -145,17 +148,6 @@ class Job extends React.Component {
           </button>
         </p>
         <div className={expanded ? 'expanded' : 'collapsed'}>
-          <div className="tr">
-            <div className="th nowrap" onClick={this.flip}>
-              {jobData.from}
-              {' '}
-              -
-              {jobData.until}
-            </div>
-            <div className="th" onClick={this.flip}>
-              {jobData.company}
-            </div>
-          </div>
           <div className="tr">
             <div className="td">
               Tasks:

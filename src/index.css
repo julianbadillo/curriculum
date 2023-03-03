@@ -226,7 +226,7 @@ hr {
     flex-direction: column;
     padding: 1rem;
     justify-content: space-between;
-    border: 1px solid darkslategray;
+    /* border: 1px solid darkslategray; */
     border-radius: 10px;
     margin: 1em;
     width: 500px;
@@ -281,13 +281,20 @@ button.expandButton:active {
 }
 
 .Skills .items .item {
-    border: 1px solid #222;
     border-radius: 3px;
     margin: 0.2em;
     padding-left: 0.5em;
     padding-right: 0.5em;
     line-height: 2.0em;
     float: left;
+}
+
+.light .Skills .items .item {
+    border: 1px solid #ccc;
+}
+
+.dark .Skills .items .item {
+    border: 1px solid #222;
 }
 
 /* education */
