@@ -18,7 +18,8 @@ class CVDisplay extends React.Component {
   }
 
   handleMenuOptionClick = (opt) => {
-    this.setState({ content: opt });
+    const { content } = this.state;
+    this.setState({ content: content === opt ? null : opt });
   };
 
   flipDark = () => {
@@ -30,19 +31,19 @@ class CVDisplay extends React.Component {
     const options = [
       {
         label: 'Education',
-        icon: 'education.svg',
+        icon: 'education',
       },
       {
         label: 'Experience',
-        icon: 'experience.svg',
+        icon: 'experience',
       },
       {
         label: 'Skills',
-        icon: 'skills.svg',
+        icon: 'skills',
       },
       {
         label: 'Awards',
-        icon: 'awards.svg',
+        icon: 'awards',
       },
     ];
     const { dark, content } = this.state;
@@ -53,10 +54,10 @@ class CVDisplay extends React.Component {
         <Menu
           handleMenuOptionClick={this.handleMenuOptionClick}
           options={options}
-          dark={dark}
           flipDark={this.flipDark}
+          content={content}
         />
-        <CVContent content={content} dark={dark} />
+        <CVContent content={content} />
         <Footer />
       </div>
     );
@@ -74,12 +75,17 @@ function PageHead() {
       <div>
         <div>&emsp;</div>
       </div>
-      <div className="Logo"><img src="jb.svg" alt="jb" /></div>
+      <div className="Logo">
+        <img className="ImgDark" src="jb.svg" alt="jb" />
+        <img className="ImgLight" src="jblight.svg" alt="jb" />
+      </div>
     </div>
   );
 }
 
-function Menu({ options, handleMenuOptionClick, flipDark }) {
+function Menu({
+  options, handleMenuOptionClick, flipDark, content,
+}) {
   return (
     <div>
       <div className="Menu">
@@ -89,6 +95,7 @@ function Menu({ options, handleMenuOptionClick, flipDark }) {
             key={option.label}
             icon={option.icon}
             handleMenuOptionClick={handleMenuOptionClick}
+            selected={content === option.label}
           />
         ))}
         <div>
@@ -99,12 +106,16 @@ function Menu({ options, handleMenuOptionClick, flipDark }) {
   );
 }
 
-function MenuOption({ handleMenuOptionClick, optionName, icon }) {
+function MenuOption({
+  handleMenuOptionClick, optionName, icon, selected,
+}) {
+  const className = selected ? 'selected' : '';
   return (
     <div>
-      <button onClick={() => handleMenuOptionClick(optionName)} type="button">
-        <img src={icon} alt="icon" />
-        {optionName}
+      <button onClick={() => handleMenuOptionClick(optionName)} type="button" className={className}>
+        <img src={`${icon}.svg`} className="ImgDark" alt="icon" />
+        <img src={`${icon}light.svg`} className="ImgLight" alt="icon" />
+        <span>{optionName}</span>
       </button>
     </div>
   );
@@ -121,14 +132,25 @@ function CVContent({ content }) {
   } else if (content === 'Awards') {
     moreContent = <Awards />;
   }
-  return <div>{moreContent}</div>;
+  return <div className="CVContent">{moreContent}</div>;
 }
 
 function Footer() {
   return (
     <div className="Footer">
-      <div><a href="https://www.linkedin.com/in/juli4nb4dillo/"><img src="in.svg" alt="Linked In" /></a></div>
-      <div><a href="https://github.com/julianbadillo"><img src="github.svg" alt="GitHub" /></a></div>
+      <div>
+        <a href="https://www.linkedin.com/in/juli4nb4dillo/">
+          <img src="in.svg" alt="Linked In" className="ImgDark" />
+          <img src="inlight.svg" alt="Linked In" className="ImgLight" />
+        </a>
+
+      </div>
+      <div>
+        <a href="https://github.com/julianbadillo">
+          <img src="github.svg" alt="GitHub" className="ImgDark" />
+          <img src="githublight.svg" alt="GitHub" className="ImgLight" />
+        </a>
+      </div>
     </div>
   );
 }
