@@ -196,9 +196,15 @@ hr {
 
 .td,
 .th {
-    border: 1px solid #222;
     display: table-cell;
     padding: 3px 10px;
+}
+
+.light .td {
+    border: 0.5px solid #ccc;
+}
+.dark .td {
+    border: 0.5px solid #333;
 }
 
 .th {
@@ -266,7 +272,8 @@ button.expandButton {
     cursor: pointer;
     width: 20px;
     height: 20px;
-    border: 1px solid #222;
+    /* border: 1px solid #222; */
+    border: none;
     border-radius: 10px;
 }
 
@@ -306,7 +313,7 @@ button.expandButton:active {
 }
 
 .dark .Skills .items .item {
-    border: 1px solid #222;
+    border: 1px solid #333;
 }
 
 /* education */
