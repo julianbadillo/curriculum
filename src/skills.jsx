@@ -86,7 +86,7 @@ class SkillClass extends React.Component {
           {skillData.skill}
                         &emsp;
           <button className="expandButton" type="button">
-            <div>{expanded ? '-' : '+'}</div>
+            <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
           </button>
         </button>
         <div className={expanded ? 'items expanded' : 'items collapsed'}>
@@ -107,7 +107,7 @@ class SkillClass extends React.Component {
 function Stars(props) {
   const c = [];
   for (let i = 0; i < props.n; i += 1) {
-    c.push(<img src="star.svg" alt="star" key={i} />);
+    c.push(<span alt="star" key={i}>&#10023;</span>);
   }
   return c;
 }

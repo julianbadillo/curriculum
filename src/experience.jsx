@@ -144,7 +144,7 @@ class Job extends React.Component {
           {jobData.position}
                     &emsp;
           <button className="expandButton" onClick={this.flip} type="button">
-            <div>{expanded ? '-' : '+'}</div>
+            <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
           </button>
         </p>
         <div className={expanded ? 'expanded' : 'collapsed'}>

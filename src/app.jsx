@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import './index.css';
 import './animation.css';
 import Experience from './experience';
@@ -95,12 +95,22 @@ function Menu({
           />
         ))}
         <div>
-          <button onClick={flipDark} className="darkFlip" type="button" />
+          <button onClick={flipDark} className="darkFlip" type="button" aria-label="Flip" />
         </div>
       </div>
     </div>
   );
 }
+
+Menu.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleMenuOptionClick: PropTypes.func.isRequired,
+  flipDark: PropTypes.func.isRequired,
+  content: PropTypes.string,
+};
+Menu.defaultProps = {
+  content: '',
+};
 
 function MenuOption({
   handleMenuOptionClick, optionName, icon, selected,
@@ -116,6 +126,15 @@ function MenuOption({
     </div>
   );
 }
+MenuOption.propTypes = {
+  handleMenuOptionClick: PropTypes.func.isRequired,
+  optionName: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
+};
+MenuOption.defaultProps = {
+  selected: false,
+};
 
 function CVContent({ content }) {
   let moreContent = '';
@@ -130,6 +149,9 @@ function CVContent({ content }) {
   }
   return <div className="CVContent">{moreContent}</div>;
 }
+CVContent.propTypes = {
+  content: PropTypes.string.isRequired,
+};
 
 function Footer() {
   return (
@@ -143,6 +165,12 @@ function Footer() {
       </div>
       <div>
         <a href="https://github.com/julianbadillo">
+          <img src="github.svg" alt="GitHub" className="ImgDark" />
+          <img src="githublight.svg" alt="GitHub" className="ImgLight" />
+        </a>
+      </div>
+      <div>
+        <a href="https://github.com/juli4nb4dillo">
           <img src="github.svg" alt="GitHub" className="ImgDark" />
           <img src="githublight.svg" alt="GitHub" className="ImgLight" />
         </a>
