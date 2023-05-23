@@ -6,14 +6,14 @@ const education = [
     city: 'Bogota, Colombia',
     degree: 'Systems and Computing Engineer (Honors)',
     level: 'MSc',
-    years: '2007–2010',
+    years: '2007-2010',
   },
   {
     institution: 'Universidad de los Andes.',
     city: 'Bogota, Colombia',
     degree: 'Systems and Computing Engineer (Honors)',
     level: 'BSc',
-    years: '2003–2007',
+    years: '2003-2007',
   },
 ];
 

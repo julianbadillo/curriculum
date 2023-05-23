@@ -5,12 +5,13 @@ const skills = [
   {
     skill: 'Programming Languages',
     items: [
-      { name: 'C#', level: '5' },
-      { name: 'Java', level: '5' },
+      { name: 'Python', level: '5' },
+      { name: 'Javascript/HTML/CSS', level: '5' },
+      { name: 'C#', level: '4' },
+      { name: 'Java', level: '4' },
       { name: 'SQL', level: '5' },
-      { name: 'Python', level: '4' },
-      { name: 'Javascript/HTML/CSS', level: '3' },
       { name: 'C/C++', level: '3' },
+      { name: 'Go', level: '2' },
       { name: 'Ruby', level: '2' },
       { name: 'Kotlin', level: '2' },
       { name: 'Bash', level: '2' },
@@ -20,10 +21,10 @@ const skills = [
   {
     skill: 'Databases',
     items: [
+      { name: 'PostgreSQL', level: '5' },
       { name: 'SQL Sever', level: '5' },
       { name: 'Oracle DB', level: '4' },
       { name: 'MySql/MariaDB', level: '3' },
-      { name: 'PostgreSQL', level: '3' },
       { name: 'CouchDB', level: '3' },
       { name: 'LiteDB', level: '3' },
     ],
@@ -31,11 +32,11 @@ const skills = [
   {
     skill: 'Web Frameworks',
     items: [
-      { name: 'ASP MVC', level: '5' },
+      { name: 'Django', level: '5' },
+      { name: 'ASP MVC', level: '4' },
       { name: 'Node.js/Express', level: '4' },
       { name: 'J2EE/JEE', level: '4' },
       { name: 'Ruby on Rails', level: '2' },
-      { name: 'Django', level: '2' },
     ],
   },
   {
@@ -46,9 +47,8 @@ const skills = [
       { name: 'CSS', level: '4' },
       { name: 'JQuery', level: '4' },
       { name: 'Git', level: '3' },
-      { name: 'Docker', level: '2' },
+      { name: 'Docker / Swarm', level: '4' },
       { name: 'Puppet', level: '2' },
-
     ],
   },
 ];
