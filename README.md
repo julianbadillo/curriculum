@@ -4,12 +4,12 @@ My personal web page.
 
 ## Dependencies
 
-- React 17+
+- React 18+
 
 ## Getting Started
 
 ```sh
-npm start
+npm install
 ```
 
 ## Run

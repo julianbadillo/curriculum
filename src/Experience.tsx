@@ -1,14 +1,20 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-array-index-key */
+import React from 'react'
 
-import React from 'react';
+interface JobItem {
+  from: string
+  until: string
+  company: string
+  webpage: string
+  division: string | null
+  city: string
+  position: string
+  references: string[]
+  keywords: string[]
+  tasks: string[]
+  accomplishments: string[]
+}
 
-const jobs = [
+const jobs: JobItem[] = [
   {
     from: 'March 2022',
     until: 'Now',
@@ -21,9 +27,9 @@ const jobs = [
     keywords: ['web developer', 'fullstack', 'Django', 'Python', 'Azure Pipelines'],
     tasks: [
       'Maintain software for chemical research and processing',
-      'REST API integration of R&D solutions',
+      'REST API integration of R&D solutions'
     ],
-    accomplishments: [],
+    accomplishments: []
   },
   {
     from: 'Jan 2021',
@@ -38,7 +44,7 @@ const jobs = [
     tasks: ['Do use case analysis for accelerator controls modernization.',
       'Develop software for accelerator controls.'],
     accomplishments: ['Use cases and functional requirements for new control system.',
-      'Refurbish of physical key inventory tracking tool.'],
+      'Refurbish of physical key inventory tracking tool.']
   },
   {
     from: 'Jan 2016',
@@ -53,7 +59,7 @@ const jobs = [
     tasks: ['Design and build full-stack web tools for the projects office.',
       'Support and maintain existing software tools.'],
     accomplishments: ['Refactoring and design from scratch of three web tools: fBCR, CAMeToolbox, RAPTR, that automated and improved intensive manual tasks of project controls.',
-      'Exceptional Performance Recognition Award (2018)'],
+      'Exceptional Performance Recognition Award (2018)']
   },
   {
     from: 'Sept 2013',
@@ -70,7 +76,7 @@ const jobs = [
       'Debugging / troubleshooting on Linux/Python grid platform.'],
     accomplishments: ['Performance optimization on several operational tools.',
       'Automation of manual tasks that were laborious for operators and error-prone.',
-      'Tide-up, maintenance and documentation of legacy operations code.'],
+      'Tide-up, maintenance and documentation of legacy operations code.']
   },
   {
     from: 'Jan 2011',
@@ -87,7 +93,7 @@ const jobs = [
       'Programming in Java',
       'Distributed systems', 'Cryptography'],
     accomplishments: ['Systems Engineering’s best teacher award, rated by students.',
-      'Design of graduate degree in information security.'],
+      'Design of graduate degree in information security.']
   },
   {
     from: 'Sept 2007',
@@ -103,33 +109,41 @@ const jobs = [
       'Provide expertise in consulting projects about information security, awareness, information classifying, business continuity planning and information technology risk analysis.'],
     accomplishments: ["Refactoring and improvement of the company's cryptographic products",
       "Design of new products based on client's needs.",
-      'Leading security-related consulting.'],
-  },
-];
+      'Leading security-related consulting.']
+  }
+]
 
-export default function Experience() {
+export default function Experience () {
   return (
     <div className="Experience slideDown">
       {jobs.map((job, i) => <Job jobData={job} key={i} />)}
     </div>
-  );
+  )
 }
 
-class Job extends React.Component {
-  constructor(props) {
-    super(props);
-    this.flip = this.flip.bind(this);
-    this.state = { expanded: false };
+interface JobProps {
+  jobData: JobItem
+}
+
+interface JobState {
+  expanded: boolean
+}
+
+class Job extends React.Component<JobProps, JobState> {
+  constructor (props: JobProps) {
+    super(props)
+    this.flip = this.flip.bind(this)
+    this.state = { expanded: false }
   }
 
-  flip() {
-    const { expanded } = this.state;
-    this.setState({ expanded: !expanded });
+  flip () {
+    const { expanded } = this.state
+    this.setState({ expanded: !expanded })
   }
 
-  render() {
-    const { jobData } = this.props;
-    const { expanded } = this.state;
+  render () {
+    const { jobData } = this.props
+    const { expanded } = this.state
     return (
       <div className="card">
         <button onClick={this.flip} className="h3" type="button">{jobData.company}</button>
@@ -176,7 +190,7 @@ class Job extends React.Component {
                   ))}
                 </div>
               </div>
-            )
+              )
             : ''}
           <div className="tr">
             <div className="td">
@@ -193,6 +207,6 @@ class Job extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

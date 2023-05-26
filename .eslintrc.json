@@ -5,20 +5,35 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "standard-with-typescript"
     ],
     "overrides": [
     ],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "react"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            },
+            "typescript": {}
+        }
+    },
     "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
     }
 }

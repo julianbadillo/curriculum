@@ -1,23 +1,31 @@
-import React from 'react';
+import React from 'react'
 
-const education = [
+interface EducationItem {
+  institution: string
+  city: string
+  degree: string
+  level: string
+  years: string
+}
+
+const education: EducationItem[] = [
   {
     institution: 'Universidad de los Andes.',
     city: 'Bogota, Colombia',
     degree: 'Systems and Computing Engineer (Honors)',
     level: 'MSc',
-    years: '2007-2010',
+    years: '2007-2010'
   },
   {
     institution: 'Universidad de los Andes.',
     city: 'Bogota, Colombia',
     degree: 'Systems and Computing Engineer (Honors)',
     level: 'BSc',
-    years: '2003-2007',
-  },
-];
+    years: '2003-2007'
+  }
+]
 
-export default function Education() {
+export default function Education () {
   return (
     <div className="Education slideDown">
       {education.map((t) => (
@@ -34,5 +42,5 @@ export default function Education() {
       ))}
 
     </div>
-  );
+  )
 }

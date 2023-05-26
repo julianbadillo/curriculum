@@ -1,49 +1,53 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './index.css';
-import './animation.css';
-import Experience from './experience';
-import Education from './education';
-import Skills from './skills';
-import Awards from './awards';
+import React from 'react'
+import './index.css'
+import './animation.css'
+import Experience from './Experience'
+import Education from './Education'
+import Skills from './Skills'
+import Awards from './Awards'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { content: null, dark: true };
+interface AppState {
+  content: string | null
+  dark: boolean
+}
+
+class App extends React.Component<any, AppState> {
+  constructor (props: any) {
+    super(props)
+    this.state = { content: null, dark: true }
   }
 
-  handleMenuOptionClick = (opt) => {
-    const { content } = this.state;
-    this.setState({ content: content === opt ? null : opt });
-  };
+  handleMenuOptionClick = (opt: string) => {
+    const { content } = this.state
+    this.setState({ content: content === opt ? null : opt })
+  }
 
   flipDark = () => {
-    const { dark } = this.state;
-    this.setState({ dark: !dark });
-  };
+    const { dark } = this.state
+    this.setState({ dark: !dark })
+  }
 
-  render() {
+  render () {
     const options = [
       {
         label: 'Education',
-        icon: 'education',
+        icon: 'education'
       },
       {
         label: 'Experience',
-        icon: 'experience',
+        icon: 'experience'
       },
       {
         label: 'Skills',
-        icon: 'skills',
+        icon: 'skills'
       },
       {
         label: 'Awards',
-        icon: 'awards',
-      },
-    ];
-    const { dark, content } = this.state;
-    document.body.className = dark ? 'dark' : 'light';
+        icon: 'awards'
+      }
+    ]
+    const { dark, content } = this.state
+    document.body.className = dark ? 'dark' : 'light'
     return (
       <div className="CVDisplay">
         <PageHead />
@@ -56,11 +60,11 @@ class App extends React.Component {
         <CVContent content={content} />
         <Footer />
       </div>
-    );
+    )
   }
 }
 
-function PageHead() {
+function PageHead () {
   return (
     <div className="PageHead">
       <div>
@@ -76,12 +80,25 @@ function PageHead() {
         <img className="ImgLight" src="jblight.svg" alt="jb" />
       </div>
     </div>
-  );
+  )
 }
 
-function Menu({
-  options, handleMenuOptionClick, flipDark, content,
-}) {
+interface MenuProps {
+  options: Array<{ label: string, icon: string }>
+  /** function type syntax that takes an event (VERY COMMON) */
+  // onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  /** alternative function type syntax that takes an event (VERY COMMON) */
+  // onClick(event: React.MouseEvent<HTMLButtonElement>): void;
+  /** any function as long as you don't invoke it (not recommended) */
+  // onSomething: Function;
+  handleMenuOptionClick: (opt: string) => void
+  flipDark: () => void
+  content: string | null
+}
+
+function Menu ({
+  options, handleMenuOptionClick, flipDark, content
+}: MenuProps) {
   return (
     <div>
       <div className="Menu">
@@ -99,61 +116,46 @@ function Menu({
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-Menu.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  handleMenuOptionClick: PropTypes.func.isRequired,
-  flipDark: PropTypes.func.isRequired,
-  content: PropTypes.string,
-};
-Menu.defaultProps = {
-  content: '',
-};
+interface MenuOptionProps {
+  handleMenuOptionClick: (opt: string) => void
+  optionName: string
+  icon: string
+  selected: boolean
+}
 
-function MenuOption({
-  handleMenuOptionClick, optionName, icon, selected,
-}) {
-  const className = selected ? 'selected' : '';
+function MenuOption ({
+  handleMenuOptionClick, optionName, icon, selected
+}: MenuOptionProps) {
+  const className = selected ? 'selected' : ''
   return (
     <div>
-      <button onClick={() => handleMenuOptionClick(optionName)} type="button" className={className}>
+      <button onClick={() => { handleMenuOptionClick(optionName) }} type="button" className={className}>
         <img src={`${icon}.svg`} className="ImgDark" alt="icon" />
         <img src={`${icon}light.svg`} className="ImgLight" alt="icon" />
         <span>{optionName}</span>
       </button>
     </div>
-  );
+  )
 }
-MenuOption.propTypes = {
-  handleMenuOptionClick: PropTypes.func.isRequired,
-  optionName: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  selected: PropTypes.bool,
-};
-MenuOption.defaultProps = {
-  selected: false,
-};
 
-function CVContent({ content }) {
-  let moreContent = '';
+function CVContent ({ content }: { content: string | null }) {
+  let moreContent = <></>
   if (content === 'Experience') {
-    moreContent = <Experience />;
+    moreContent = <Experience />
   } else if (content === 'Education') {
-    moreContent = <Education />;
+    moreContent = <Education />
   } else if (content === 'Skills') {
-    moreContent = <Skills />;
+    moreContent = <Skills />
   } else if (content === 'Awards') {
-    moreContent = <Awards />;
+    moreContent = <Awards />
   }
-  return <div className="CVContent">{moreContent}</div>;
+  return <div className="CVContent">{moreContent}</div>
 }
-CVContent.propTypes = {
-  content: PropTypes.string.isRequired,
-};
 
-function Footer() {
+function Footer () {
   return (
     <div className="Footer">
       <div>
@@ -176,7 +178,7 @@ function Footer() {
         </a>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
