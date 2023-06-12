@@ -1,10 +1,14 @@
 import React from 'react'
 import './index.css'
-import './animation.css'
+//import './animation.css'
 import Experience from './Experience'
 import Education from './Education'
 import Skills from './Skills'
 import Awards from './Awards'
+import { Button, Col, Container, Row } from 'react-bootstrap'
+import ThemeToggle from './ThemeToggle'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAward, faBuildingColumns, faLaptopCode, faUserGraduate, IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
 interface AppState {
   content: string | null
@@ -12,7 +16,7 @@ interface AppState {
 }
 
 class App extends React.Component<any, AppState> {
-  constructor (props: any) {
+  constructor(props: any) {
     super(props)
     this.state = { content: null, dark: true }
   }
@@ -22,69 +26,61 @@ class App extends React.Component<any, AppState> {
     this.setState({ content: content === opt ? null : opt })
   }
 
-  flipDark = () => {
-    const { dark } = this.state
-    this.setState({ dark: !dark })
-  }
-
-  render () {
+  render() {
     const options = [
       {
         label: 'Education',
-        icon: 'education'
+        icon: faUserGraduate,
       },
       {
         label: 'Experience',
-        icon: 'experience'
+        icon: faBuildingColumns,
       },
       {
         label: 'Skills',
-        icon: 'skills'
+        icon: faLaptopCode,
       },
       {
         label: 'Awards',
-        icon: 'awards'
+        icon: faAward,
       }
     ]
-    const { dark, content } = this.state
-    document.body.className = dark ? 'dark' : 'light'
+    const { content } = this.state;
     return (
-      <div className="CVDisplay">
+      <Container>
         <PageHead />
         <Menu
           handleMenuOptionClick={this.handleMenuOptionClick}
           options={options}
-          flipDark={this.flipDark}
           content={content}
         />
         <CVContent content={content} />
         <Footer />
-      </div>
+      </Container>
     )
   }
 }
 
-function PageHead () {
+function PageHead() {
   return (
-    <div className="PageHead">
-      <div>
+    <Row className='p-5'>
+      <Col>
         <h1>Julian Badillo</h1>
         <h2>Software Engineer</h2>
         <p>A successful day: when someone is grateful I&lsquo;m working by their side.</p>
-      </div>
-      <div>
+      </Col>
+      <Col>
         <div>&emsp;</div>
-      </div>
-      <div className="Logo">
-        <img className="ImgDark" src="jb.svg" alt="jb" />
-        <img className="ImgLight" src="jblight.svg" alt="jb" />
-      </div>
-    </div>
+      </Col>
+      <Col>
+        <img className="logo-dark" src="jblight.svg" alt="jb" />
+      </Col>
+    </Row>
   )
 }
 
 interface MenuProps {
-  options: Array<{ label: string, icon: string }>
+  options: Array<{ label: string, icon: IconDefinition }>
   /** function type syntax that takes an event (VERY COMMON) */
   // onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /** alternative function type syntax that takes an event (VERY COMMON) */
@@ -92,17 +88,16 @@ interface MenuProps {
   /** any function as long as you don't invoke it (not recommended) */
   // onSomething: Function;
   handleMenuOptionClick: (opt: string) => void
-  flipDark: () => void
   content: string | null
 }
 
-function Menu ({
-  options, handleMenuOptionClick, flipDark, content
+function Menu({
+  options, handleMenuOptionClick, content
 }: MenuProps) {
   return (
-    <div>
-      <div className="Menu">
-        {options.map((option) => (
+    <Row className='p-5'>
+      {options.map((option) => (
+        <Col className='col-3'>
           <MenuOption
             optionName={option.label}
             key={option.label}
@@ -110,38 +105,38 @@ function Menu ({
             handleMenuOptionClick={handleMenuOptionClick}
             selected={content === option.label}
           />
-        ))}
-        <div>
-          <button onClick={flipDark} className="darkFlip" type="button" aria-label="Flip" />
-        </div>
-      </div>
-    </div>
+        </Col>
+      ))}
+      <Col>
+        <ThemeToggle />
+      </Col>
+    </Row>
   )
 }
 
 interface MenuOptionProps {
   handleMenuOptionClick: (opt: string) => void
   optionName: string
-  icon: string
+  icon: IconDefinition
   selected: boolean
 }
 
-function MenuOption ({
+function MenuOption({
   handleMenuOptionClick, optionName, icon, selected
 }: MenuOptionProps) {
   const className = selected ? 'selected' : ''
   return (
     <div>
-      <button onClick={() => { handleMenuOptionClick(optionName) }} type="button" className={className}>
-        <img src={`${icon}.svg`} className="ImgDark" alt="icon" />
-        <img src={`${icon}light.svg`} className="ImgLight" alt="icon" />
+      <Button onClick={() => { handleMenuOptionClick(optionName) }} className={className} variant="secondary">
+        <FontAwesomeIcon icon={icon} />
+        &nbsp;
         <span>{optionName}</span>
-      </button>
+      </Button>
     </div>
   )
 }
 
-function CVContent ({ content }: { content: string | null }) {
+function CVContent({ content }: { content: string | null }) {
   let moreContent = <></>
   if (content === 'Experience') {
     moreContent = <Experience />
@@ -152,32 +147,29 @@ function CVContent ({ content }: { content: string | null }) {
   } else if (content === 'Awards') {
     moreContent = <Awards />
   }
-  return <div className="CVContent">{moreContent}</div>
+  return <Row className="CVContent p-5">{moreContent}</Row>
 }
 
-function Footer () {
+function Footer() {
   return (
-    <div className="Footer">
-      <div>
-        <a href="https://www.linkedin.com/in/juli4nb4dillo/">
-          <img src="in.svg" alt="Linked In" className="ImgDark" />
+    <Row className="Footer p-5 text-center">
+      <Col>
+        <a href="https://www.linkedin.com/in/juli4nb4dillo/" title='LinkedIn'>
           <img src="inlight.svg" alt="Linked In" className="ImgLight" />
         </a>
 
-      </div>
-      <div>
-        <a href="https://github.com/julianbadillo">
-          <img src="github.svg" alt="GitHub" className="ImgDark" />
+      </Col>
+      <Col>
+        <a href="https://github.com/julianbadillo" title='Personal GitHub'>
           <img src="githublight.svg" alt="GitHub" className="ImgLight" />
         </a>
-      </div>
-      <div>
-        <a href="https://github.com/juli4nb4dillo">
-          <img src="github.svg" alt="GitHub" className="ImgDark" />
+      </Col>
+      <Col>
+        <a href="https://github.com/juli4nb4dillo" title='Corporate GitHub'>
           <img src="githublight.svg" alt="GitHub" className="ImgLight" />
         </a>
-      </div>
-    </div>
+      </Col>
+    </Row>
   )
 }
 
