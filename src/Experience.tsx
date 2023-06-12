@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 
 interface JobItem {
   from: string
@@ -170,9 +170,9 @@ class Job extends React.Component<JobProps, JobState> {
             {' '}
             {jobData.position}
             &emsp;
-            <button className="expandButton" onClick={this.flip} type="button">
+            <Button className="expandButton btn-secondary btn-sm" onClick={this.flip}>
               <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
-            </button>
+            </Button>
           </p>
           <div className={expanded ? 'expanded' : 'collapsed'}>
             <div className="row">

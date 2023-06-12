@@ -1,4 +1,7 @@
+import { faMedal } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 interface AwardItem {
   year: number
@@ -19,11 +22,9 @@ export default function Awards () {
   return (
     <div className="Awards slideDown">
       {awards.map((a) => (
-        <div key={a.name} className="card">
-          <b>{a.year}</b>
-          :
-          {a.name}
-        </div>
+        <Card key={a.name} className="card m-3">
+          <Card.Header><FontAwesomeIcon icon={faMedal} /> {a.year}: {a.name}</Card.Header>
+        </Card>
       ))}
     </div>
   )

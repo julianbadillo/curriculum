@@ -1,20 +1,26 @@
 /* eslint-disable react/prop-types */
+import { faBug, faCode, faDatabase, faGlobe, faTemperature0, faTemperature1, faTemperature2, faTemperature3, faTemperature4, faToolbox, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Badge, Button, Card } from 'react-bootstrap'
 
 interface SkillItem {
-  skill: string
+  skill: string,
+  icon?: IconDefinition,
   // array of items (name, level)
   items: Array<{
     name: string
     level: number
+    icon?: IconDefinition
   }>
 }
 
 const skills: SkillItem[] = [
   {
     skill: 'Programming Languages',
+    icon: faBug,
     items: [
-      { name: 'Python', level: 5 },
+      { name: 'Python &f3e2;', level: 5 },
       { name: 'JavaScript/HTML/CSS', level: 5 },
       { name: 'C#', level: 4 },
       { name: 'Java', level: 4 },
@@ -30,6 +36,7 @@ const skills: SkillItem[] = [
   },
   {
     skill: 'Databases',
+    icon: faDatabase,
     items: [
       { name: 'PostgreSQL', level: 5 },
       { name: 'SQL Sever', level: 5 },
@@ -41,6 +48,7 @@ const skills: SkillItem[] = [
   },
   {
     skill: 'Web Frameworks',
+    icon: faCode,
     items: [
       { name: 'Django', level: 5 },
       { name: 'ASP MVC', level: 4 },
@@ -51,8 +59,8 @@ const skills: SkillItem[] = [
   },
   {
     skill: 'Miscellaneous',
+    icon: faToolbox,
     items: [
-
       { name: 'React', level: 5 },
       { name: 'CSS', level: 4 },
       { name: 'Prompt Engineering', level: 4 },
@@ -63,7 +71,7 @@ const skills: SkillItem[] = [
   }
 ]
 
-export default function Skills () {
+export default function Skills() {
   return (
     <div className="Skills slideDown">
       {skills.map((skill) => <SkillClass skillData={skill} key={skill.skill} />)}
@@ -84,41 +92,44 @@ interface SkillState {
  * Skill class
  *
  */
-class SkillClass extends React.Component <SkillProps, SkillState> {
-  constructor (props: SkillProps) {
+class SkillClass extends React.Component<SkillProps, SkillState> {
+  constructor(props: SkillProps) {
     super(props)
     this.flip = this.flip.bind(this)
     this.state = { expanded: false }
   }
 
-  flip () {
+  flip() {
     const { expanded } = this.state
     this.setState({ expanded: !expanded })
   }
 
-  render () {
+  render() {
     const { skillData } = this.props
     const { expanded } = this.state
     return (
-      <div className="card">
-        <button onClick={this.flip} type="button" className="h3">
+      <Card className='m-3'>
+        <Card.Header onClick={this.flip}>
+          {skillData.icon ? <><FontAwesomeIcon icon={skillData.icon} />&emsp;</> : ''}
           {skillData.skill}
-                        &emsp;
-          <button className="expandButton" type="button">
+          &emsp;
+          <Button className="expandButton  btn-secondary btn-sm">
             <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
-          </button>
-        </button>
-        <div className={expanded ? 'items expanded' : 'items collapsed'}>
-          {skillData.items.map((m) => (
-            <span className="item" key={m.name}>
-              {m.name}
-              &nbsp;
-              <Stars n={m.level} />
-              {' '}
-            </span>
-          ))}
-        </div>
-      </div>
+          </Button>
+        </Card.Header>
+        <Card.Body>
+          <div className={expanded ? 'items expanded' : 'items collapsed'}>
+            {skillData.items.map((m) => (
+              <Badge className="item bg-secondary m-1 p-2" key={m.name}>
+                {m.name}
+                &nbsp;
+                <Temp n={m.level} />
+                {' '}
+              </Badge>
+            ))}
+          </div>
+        </Card.Body>
+      </Card>
     )
   }
 }
@@ -129,10 +140,23 @@ interface StarProps {
 /**
  * Render a few stars
  */
-function Stars ({ n }: StarProps): JSX.Element {
+function Stars({ n }: StarProps): JSX.Element {
   const c = []
   for (let i = 0; i < n; i += 1) {
     c.push(<span key={i}>&#10023;</span>)
   }
   return <>{c}</>
+}
+
+function Temp({ n }: StarProps): JSX.Element {
+  if (n >= 5) {
+    return <FontAwesomeIcon icon={faTemperature4} />
+  } else if (n === 4) {
+    return <FontAwesomeIcon icon={faTemperature3} />
+  } else if (n === 3) {
+    return <FontAwesomeIcon icon={faTemperature2} />
+  } else if (n === 2) {
+    return <FontAwesomeIcon icon={faTemperature1} />
+  }
+  return <FontAwesomeIcon icon={faTemperature0} />
 }

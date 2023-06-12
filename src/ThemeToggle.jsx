@@ -2,6 +2,7 @@ import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import {
   setTheme, setStoredTheme, getStoredTheme, getMediaTheme,
 } from './colorModeToggle';
@@ -32,10 +33,10 @@ export default function ThemeToggle() {
   // update when loading
   useEffect(() => { setTh(getStoredTheme()); }, []);
   return (
-    <button type="button" onClick={toggleThemeClick} className="btn btn-outline-secondary btn-sm float-end">
+    <Button onClick={toggleThemeClick} className="btn btn-secondary btn-sm float-end">
       {th === 'dark' ? <FontAwesomeIcon icon={faMoon} /> : ''}
       {th === 'light' ? <FontAwesomeIcon icon={faSun} /> : ''}
       {th === null ? <FontAwesomeIcon icon={faCircleHalfStroke} /> : ''}
-    </button>
+    </Button>
   );
 }

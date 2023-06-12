@@ -63,18 +63,18 @@ class App extends React.Component<any, AppState> {
 
 function PageHead() {
   return (
-    <Row className='p-5'>
-      <Col>
+    <Row className='p-3 text-center'>
+      <Col className='text-start'>
         <h1>Julian Badillo</h1>
         <h2>Software Engineer</h2>
         <p>A successful day: when someone is grateful I&lsquo;m working by their side.</p>
       </Col>
-      <Col>
-        <div>&emsp;</div>
-      </Col>
-      <Col>
+      <Col className='text-end'>
         <img className="logo-dark" src="jblight.svg" alt="jb" />
       </Col>
+      <div className='position-absolute top-0 end-0 m-2 m-md-4'>
+        <ThemeToggle />
+      </div>
     </Row>
   )
 }
@@ -95,9 +95,9 @@ function Menu({
   options, handleMenuOptionClick, content
 }: MenuProps) {
   return (
-    <Row className='p-5'>
+    <Row className='p-3 text-center'>
       {options.map((option) => (
-        <Col className='col-3'>
+        <Col>
           <MenuOption
             optionName={option.label}
             key={option.label}
@@ -107,9 +107,6 @@ function Menu({
           />
         </Col>
       ))}
-      <Col>
-        <ThemeToggle />
-      </Col>
     </Row>
   )
 }
@@ -147,7 +144,7 @@ function CVContent({ content }: { content: string | null }) {
   } else if (content === 'Awards') {
     moreContent = <Awards />
   }
-  return <Row className="CVContent p-5">{moreContent}</Row>
+  return <Row className="CVContent p-3">{moreContent}</Row>
 }
 
 function Footer() {
