@@ -7,6 +7,10 @@ body {
     width: 10em;
 }
 
+.App {
+    max-width: 42em !important;
+}
+
 .Footer img {
     width: 2em;
 }

@@ -1,31 +1,40 @@
-import React from 'react'
-import './index.css'
-//import './animation.css'
-import Experience from './Experience'
-import Education from './Education'
-import Skills from './Skills'
-import Awards from './Awards'
-import { Button, Col, Container, Row } from 'react-bootstrap'
-import ThemeToggle from './ThemeToggle'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAward, faBuildingColumns, faLaptopCode, faUserGraduate, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
+import './index.css';
+//import './animation.css';
+import Experience from './Experience';
+import Education from './Education';
+import Skills from './Skills';
+import Awards from './Awards';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import ThemeToggle from './ThemeToggle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAward, faBuildingColumns, faLaptopCode, faUserGraduate, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 interface AppState {
+  // to know which component to display
   content: string | null
-  dark: boolean
 }
 
-class App extends React.Component<any, AppState> {
-  constructor(props: any) {
-    super(props)
-    this.state = { content: null, dark: true }
+/**
+ * Main component for the app
+ */
+class App extends React.Component<unknown, AppState> {
+  constructor(props: unknown) {
+    super(props);
+    this.state = { content: null };
   }
 
+  /**
+   * When a menu option is clicked
+   */
   handleMenuOptionClick = (opt: string) => {
-    const { content } = this.state
-    this.setState({ content: content === opt ? null : opt })
-  }
+    const { content } = this.state;
+    this.setState({ content: content === opt ? null : opt });
+  };
 
+  /**
+   * Render the app
+   * */
   render() {
     const options = [
       {
@@ -43,11 +52,11 @@ class App extends React.Component<any, AppState> {
       {
         label: 'Awards',
         icon: faAward,
-      }
-    ]
+      },
+    ];
     const { content } = this.state;
     return (
-      <Container>
+      <Container className="App">
         <PageHead />
         <Menu
           handleMenuOptionClick={this.handleMenuOptionClick}
@@ -57,10 +66,13 @@ class App extends React.Component<any, AppState> {
         <CVContent content={content} />
         <Footer />
       </Container>
-    )
+    );
   }
 }
 
+/**
+ * Header component
+ */
 function PageHead() {
   return (
     <Row className='p-3 text-center'>
@@ -76,7 +88,7 @@ function PageHead() {
         <ThemeToggle />
       </div>
     </Row>
-  )
+  );
 }
 
 interface MenuProps {
@@ -91,16 +103,18 @@ interface MenuProps {
   content: string | null
 }
 
+/**
+ * Menu component
+ * */
 function Menu({
-  options, handleMenuOptionClick, content
+  options, handleMenuOptionClick, content,
 }: MenuProps) {
   return (
     <Row className='p-3 text-center'>
       {options.map((option) => (
-        <Col>
+        <Col key={option.label}>
           <MenuOption
             optionName={option.label}
-            key={option.label}
             icon={option.icon}
             handleMenuOptionClick={handleMenuOptionClick}
             selected={content === option.label}
@@ -108,7 +122,7 @@ function Menu({
         </Col>
       ))}
     </Row>
-  )
+  );
 }
 
 interface MenuOptionProps {
@@ -118,56 +132,66 @@ interface MenuOptionProps {
   selected: boolean
 }
 
+/**
+ * Each of the menu options
+ */
 function MenuOption({
-  handleMenuOptionClick, optionName, icon, selected
+  handleMenuOptionClick, optionName, icon, selected,
 }: MenuOptionProps) {
-  const className = selected ? 'selected' : ''
+  const className = selected ? 'selected' : '';
   return (
     <div>
-      <Button onClick={() => { handleMenuOptionClick(optionName) }} className={className} variant="secondary">
+      <Button onClick={() => { handleMenuOptionClick(optionName); }} className={className} variant="secondary">
         <FontAwesomeIcon icon={icon} />
         &nbsp;
         <span>{optionName}</span>
       </Button>
     </div>
-  )
+  );
 }
 
+/**
+ * Where content is displayed after click.
+ */
 function CVContent({ content }: { content: string | null }) {
-  let moreContent = <></>
+  let moreContent = <></>;
   if (content === 'Experience') {
-    moreContent = <Experience />
+    moreContent = <Experience />;
   } else if (content === 'Education') {
-    moreContent = <Education />
+    moreContent = <Education />;
   } else if (content === 'Skills') {
-    moreContent = <Skills />
+    moreContent = <Skills />;
   } else if (content === 'Awards') {
-    moreContent = <Awards />
+    moreContent = <Awards />;
   }
-  return <Row className="CVContent p-3">{moreContent}</Row>
+  return <Row className="CVContent pt-2">{moreContent}</Row>;
 }
 
+/**
+ * Footer component
+ */
 function Footer() {
   return (
-    <Row className="Footer p-5 text-center">
-      <Col>
+    <Row className="Footer p-5">
+      <div className='d-flex justify-content-center'>
+      <div>
         <a href="https://www.linkedin.com/in/juli4nb4dillo/" title='LinkedIn'>
           <img src="inlight.svg" alt="Linked In" className="ImgLight" />
         </a>
-
-      </Col>
-      <Col>
+      </div>
+      <div>
         <a href="https://github.com/julianbadillo" title='Personal GitHub'>
           <img src="githublight.svg" alt="GitHub" className="ImgLight" />
         </a>
-      </Col>
-      <Col>
+      </div>
+      <div>
         <a href="https://github.com/juli4nb4dillo" title='Corporate GitHub'>
           <img src="githublight.svg" alt="GitHub" className="ImgLight" />
         </a>
-      </Col>
+      </div>
+      </div>
     </Row>
-  )
+  );
 }
 
-export default App
+export default App;

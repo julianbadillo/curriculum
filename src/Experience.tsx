@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button, Card } from 'react-bootstrap'
+import React from 'react';
+import { Button, Card } from 'react-bootstrap';
 
 interface JobItem {
   from: string
@@ -25,7 +25,7 @@ const jobs: JobItem[] = [
     division: 'IT',
     city: 'Skokie, IL',
     position: 'Senior Software Engineer',
-    references: ['Patrick Fuller pat@numat-tech.com'],
+    references: ['Patrick Fuller pat@numat-tech.com', 'Paul Boone paul.boone@numat-tech.com'],
     keywords: ['web developer', 'fullstack', 'Django', 'Python', 'Azure Pipelines'],
     tasks: [
       'Maintain software for chemical research and processing',
@@ -51,7 +51,7 @@ const jobs: JobItem[] = [
       'Develop software for accelerator controls.'],
     accomplishments: ['Use cases and functional requirements for new control system.',
       'Refurbish of physical key inventory tracking tool.'],
-    skills: ['React', 
+    skills: ['React',
       'Node.js', 'Express',]
   },
   {
@@ -118,13 +118,17 @@ const jobs: JobItem[] = [
     keywords: ['security', 'cryptography', 'pki', 'digital signatures', 'software', 'java', 'information security', 'j2ee', 'consulting'],
     tasks: ['Design, develop and support software applications intended to secure our client’s information.',
       'Provide expertise in consulting projects about information security, awareness, information classifying, business continuity planning and information technology risk analysis.'],
-    accomplishments: ["Refactoring and improvement of the company's cryptographic products",
-      "Design of new products based on client's needs.",
+    accomplishments: ['Refactoring and improvement of the company\'s cryptographic products',
+      'Design of new products based on client\'s needs.',
       'Leading security-related consulting.'],
     skills: ['SQLServer', 'JavaEE', 'Javascript']
   }
-]
+];
 
+/**
+ * 
+ * @returns the Experience component
+ */
 export default function Experience() {
   return (
     <div className="Experience slideDown">
@@ -134,52 +138,55 @@ export default function Experience() {
 }
 
 interface JobProps {
-  jobData: JobItem
+  jobData: JobItem;
 }
 
 interface JobState {
-  expanded: boolean
+  expanded: boolean;
 }
 
 class Job extends React.Component<JobProps, JobState> {
   constructor(props: JobProps) {
-    super(props)
-    this.flip = this.flip.bind(this)
-    this.state = { expanded: false }
+    super(props);
+    this.flip = this.flip.bind(this);
+    this.state = { expanded: false };
   }
 
   flip() {
-    const { expanded } = this.state
-    this.setState({ expanded: !expanded })
+    const { expanded } = this.state;
+    this.setState({ expanded: !expanded });
   }
 
   render() {
-    const { jobData } = this.props
-    const { expanded } = this.state
+    const { jobData } = this.props;
+    const { expanded } = this.state;
     return (
       <Card className='m-3'>
-        <Card.Header>{jobData.company}</Card.Header>
-        <Card.Body>
-          <p>
-            {jobData.from}
-            {' '}
-            -
-            {' '}
-            {jobData.until}
-            :
+        <Card.Header>
+          {jobData.company}
+          <Button className="expandButton btn-secondary btn-sm float-end" onClick={this.flip}>
+            <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
+          </Button>
+          <div>
+            <b>
+              {jobData.from}
+              {' '}
+              -
+              {' '}
+              {jobData.until}
+              :
+            </b>
             {' '}
             {jobData.position}
-            &emsp;
-            <Button className="expandButton btn-secondary btn-sm" onClick={this.flip}>
-              <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
-            </Button>
-          </p>
-          <div className={expanded ? 'expanded' : 'collapsed'}>
-            <div className="row">
-              <div className="col">
+          </div>
+        </Card.Header>
+        <Card.Body className={expanded ? '' : 'd-none'}>
+          <div>
+            <div className="row border-bottom">
+              <div className="col-4">
                 Tasks:
               </div>
-              <div className="col">
+              <div className="col-8">
                 {jobData.tasks.map((task, i) => (
                   <span key={`t${i}`}>
                     {task}
@@ -191,10 +198,10 @@ class Job extends React.Component<JobProps, JobState> {
             {jobData.accomplishments.length > 0
               ? (
                 <div className="row">
-                  <div className="col">
+                  <div className="col-4">
                     Key Accomplishments:
                   </div>
-                  <div className="col">
+                  <div className="col-8">
                     {jobData.accomplishments.map((acc, i) => (
                       <span key={i}>
                         {acc}
@@ -206,10 +213,10 @@ class Job extends React.Component<JobProps, JobState> {
               )
               : ''}
             <div className="row">
-              <div className="col">
+              <div className="col-4">
                 References:
               </div>
-              <div className="col">
+              <div className="col-8">
                 {jobData.references.map((ref, i) => (
                   <span key={`r${i}`}>
                     {ref}
@@ -221,6 +228,6 @@ class Job extends React.Component<JobProps, JobState> {
           </div>
         </Card.Body>
       </Card>
-    )
+    );
   }
 }

@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { faBug, faCode, faDatabase, faGlobe, faTemperature0, faTemperature1, faTemperature2, faTemperature3, faTemperature4, faToolbox, IconDefinition } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-import { Badge, Button, Card } from 'react-bootstrap'
+import { faBug, faCode, faDatabase, faTemperature0, faTemperature1, faTemperature2, faTemperature3, faTemperature4, faToolbox,
+  faGem, IconDefinition, faTerminal } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPython, faJava, faJs, faReact, faCss3Alt } from '@fortawesome/free-brands-svg-icons';
+import React from 'react';
+import { Badge, Button, Card } from 'react-bootstrap';
 
 interface SkillItem {
   skill: string,
@@ -20,17 +22,16 @@ const skills: SkillItem[] = [
     skill: 'Programming Languages',
     icon: faBug,
     items: [
-      { name: 'Python &f3e2;', level: 5 },
-      { name: 'JavaScript/HTML/CSS', level: 5 },
+      { name: 'Python', level: 5, icon: faPython },
+      { name: 'JavaScript/HTML/CSS', level: 5, icon: faJs },
       { name: 'C#', level: 4 },
-      { name: 'Java', level: 4 },
+      { name: 'Java', level: 4, icon: faJava },
       { name: 'SQL', level: 5 },
       { name: 'C/C++', level: 3 },
       { name: 'TypeScript', level: 3 },
       { name: 'Go', level: 2 },
-      { name: 'Ruby', level: 2 },
+      { name: 'Ruby', level: 2, icon: faGem },
       { name: 'Kotlin', level: 2 },
-      { name: 'Bash', level: 2 },
       { name: 'Matlab', level: 2 }
     ]
   },
@@ -42,7 +43,7 @@ const skills: SkillItem[] = [
       { name: 'SQL Sever', level: 5 },
       { name: 'Oracle DB', level: 4 },
       { name: 'MySql/MariaDB', level: 3 },
-      { name: 'CouchDB', level: 3 },
+      { name: 'MongoDB', level: 3 },
       { name: 'LiteDB', level: 3 }
     ]
   },
@@ -61,12 +62,14 @@ const skills: SkillItem[] = [
     skill: 'Miscellaneous',
     icon: faToolbox,
     items: [
-      { name: 'React', level: 5 },
-      { name: 'CSS', level: 4 },
+      { name: 'React', level: 5, icon: faReact },
+      { name: 'CSS', level: 4, icon: faCss3Alt },
       { name: 'Prompt Engineering', level: 4 },
       { name: 'JQuery', level: 4 },
+      { name: 'Docker / Swarm', level: 4 },
       { name: 'Git', level: 3 },
-      { name: 'Docker / Swarm', level: 4 }
+      { name: 'Bash', level: 2, icon: faTerminal },
+      
     ]
   }
 ]
@@ -113,7 +116,7 @@ class SkillClass extends React.Component<SkillProps, SkillState> {
           {skillData.icon ? <><FontAwesomeIcon icon={skillData.icon} />&emsp;</> : ''}
           {skillData.skill}
           &emsp;
-          <Button className="expandButton  btn-secondary btn-sm">
+          <Button className="expandButton  btn-secondary btn-sm float-end">
             <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
           </Button>
         </Card.Header>
@@ -121,6 +124,7 @@ class SkillClass extends React.Component<SkillProps, SkillState> {
           <div className={expanded ? 'items expanded' : 'items collapsed'}>
             {skillData.items.map((m) => (
               <Badge className="item bg-secondary m-1 p-2" key={m.name}>
+                {m.icon ? <><FontAwesomeIcon icon={m.icon} />&nbsp;</> : ''}
                 {m.name}
                 &nbsp;
                 <Temp n={m.level} />
@@ -136,16 +140,6 @@ class SkillClass extends React.Component<SkillProps, SkillState> {
 
 interface StarProps {
   n: number
-}
-/**
- * Render a few stars
- */
-function Stars({ n }: StarProps): JSX.Element {
-  const c = []
-  for (let i = 0; i < n; i += 1) {
-    c.push(<span key={i}>&#10023;</span>)
-  }
-  return <>{c}</>
 }
 
 function Temp({ n }: StarProps): JSX.Element {
