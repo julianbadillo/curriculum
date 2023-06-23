@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Button, Card } from 'react-bootstrap';
 
 interface JobItem {
   from: string
@@ -11,7 +12,8 @@ interface JobItem {
   references: string[]
   keywords: string[]
   tasks: string[]
-  accomplishments: string[]
+  accomplishments: string[],
+  skills: string[],
 }
 
 const jobs: JobItem[] = [
@@ -23,13 +25,17 @@ const jobs: JobItem[] = [
     division: 'IT',
     city: 'Skokie, IL',
     position: 'Senior Software Engineer',
-    references: ['Patrick Fuller pat@numat-tech.com'],
+    references: ['Patrick Fuller pat@numat-tech.com', 'Paul Boone paul.boone@numat-tech.com'],
     keywords: ['web developer', 'fullstack', 'Django', 'Python', 'Azure Pipelines'],
     tasks: [
       'Maintain software for chemical research and processing',
       'REST API integration of R&D solutions'
     ],
-    accomplishments: []
+    accomplishments: ['Integration of E-Lab Notebook, Chemical Inventory and Laboratory systems.',
+      'Implementation of a Company Portal for internal use.',
+      'Refactoring and testing of legacy code.'],
+    skills: ['Python', 'Django', 'React', 'RestAPI', 'Docker', 'Swarm'
+    ]
   },
   {
     from: 'Jan 2021',
@@ -44,7 +50,9 @@ const jobs: JobItem[] = [
     tasks: ['Do use case analysis for accelerator controls modernization.',
       'Develop software for accelerator controls.'],
     accomplishments: ['Use cases and functional requirements for new control system.',
-      'Refurbish of physical key inventory tracking tool.']
+      'Refurbish of physical key inventory tracking tool.'],
+    skills: ['React',
+      'Node.js', 'Express',]
   },
   {
     from: 'Jan 2016',
@@ -59,7 +67,8 @@ const jobs: JobItem[] = [
     tasks: ['Design and build full-stack web tools for the projects office.',
       'Support and maintain existing software tools.'],
     accomplishments: ['Refactoring and design from scratch of three web tools: fBCR, CAMeToolbox, RAPTR, that automated and improved intensive manual tasks of project controls.',
-      'Exceptional Performance Recognition Award (2018)']
+      'Exceptional Performance Recognition Award (2018)'],
+    skills: ['ASP.Net', 'MVC', 'SqlServer', 'JavaScript', 'JQuery']
   },
   {
     from: 'Sept 2013',
@@ -76,7 +85,8 @@ const jobs: JobItem[] = [
       'Debugging / troubleshooting on Linux/Python grid platform.'],
     accomplishments: ['Performance optimization on several operational tools.',
       'Automation of manual tasks that were laborious for operators and error-prone.',
-      'Tide-up, maintenance and documentation of legacy operations code.']
+      'Tide-up, maintenance and documentation of legacy operations code.'],
+    skills: ['Python', 'REST API', 'Bash', 'Oracle', 'CouchDB']
   },
   {
     from: 'Jan 2011',
@@ -93,7 +103,8 @@ const jobs: JobItem[] = [
       'Programming in Java',
       'Distributed systems', 'Cryptography'],
     accomplishments: ['Systems Engineering’s best teacher award, rated by students.',
-      'Design of graduate degree in information security.']
+      'Design of graduate degree in information security.'],
+    skills: ['Java', 'Python']
   },
   {
     from: 'Sept 2007',
@@ -107,13 +118,18 @@ const jobs: JobItem[] = [
     keywords: ['security', 'cryptography', 'pki', 'digital signatures', 'software', 'java', 'information security', 'j2ee', 'consulting'],
     tasks: ['Design, develop and support software applications intended to secure our client’s information.',
       'Provide expertise in consulting projects about information security, awareness, information classifying, business continuity planning and information technology risk analysis.'],
-    accomplishments: ["Refactoring and improvement of the company's cryptographic products",
-      "Design of new products based on client's needs.",
-      'Leading security-related consulting.']
+    accomplishments: ['Refactoring and improvement of the company\'s cryptographic products',
+      'Design of new products based on client\'s needs.',
+      'Leading security-related consulting.'],
+    skills: ['SQLServer', 'JavaEE', 'Javascript']
   }
-]
+];
 
-export default function Experience () {
+/**
+ * 
+ * @returns the Experience component
+ */
+export default function Experience() {
   return (
     <div className="Experience slideDown">
       {jobs.map((job, i) => <Job jobData={job} key={i} />)}
@@ -122,91 +138,96 @@ export default function Experience () {
 }
 
 interface JobProps {
-  jobData: JobItem
+  jobData: JobItem;
 }
 
 interface JobState {
-  expanded: boolean
+  expanded: boolean;
 }
 
 class Job extends React.Component<JobProps, JobState> {
-  constructor (props: JobProps) {
-    super(props)
-    this.flip = this.flip.bind(this)
-    this.state = { expanded: false }
+  constructor(props: JobProps) {
+    super(props);
+    this.flip = this.flip.bind(this);
+    this.state = { expanded: false };
   }
 
-  flip () {
-    const { expanded } = this.state
-    this.setState({ expanded: !expanded })
+  flip() {
+    const { expanded } = this.state;
+    this.setState({ expanded: !expanded });
   }
 
-  render () {
-    const { jobData } = this.props
-    const { expanded } = this.state
+  render() {
+    const { jobData } = this.props;
+    const { expanded } = this.state;
     return (
-      <div className="card">
-        <button onClick={this.flip} className="h3" type="button">{jobData.company}</button>
-        <p>
-          {jobData.from}
-          {' '}
-          -
-          {' '}
-          {jobData.until}
-          :
-          {' '}
-          {jobData.position}
-                    &emsp;
-          <button className="expandButton" onClick={this.flip} type="button">
+      <Card className='m-3'>
+        <Card.Header>
+          {jobData.company}
+          <Button className="expandButton btn-secondary btn-sm float-end" onClick={this.flip}>
             <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
-          </button>
-        </p>
-        <div className={expanded ? 'expanded' : 'collapsed'}>
-          <div className="tr">
-            <div className="td">
-              Tasks:
-            </div>
-            <div className="td">
-              {jobData.tasks.map((task, i) => (
-                <span key={`t${i}`}>
-                  {task}
-                  <br />
-                </span>
-              ))}
-            </div>
+          </Button>
+          <div>
+            <b>
+              {jobData.from}
+              {' '}
+              -
+              {' '}
+              {jobData.until}
+              :
+            </b>
+            {' '}
+            {jobData.position}
           </div>
-          {jobData.accomplishments.length > 0
-            ? (
-              <div className="tr">
-                <div className="td">
-                  Key Accomplishments:
-                </div>
-                <div className="td">
-                  {jobData.accomplishments.map((acc, i) => (
-                    <span key={i}>
-                      {acc}
-                      <br />
-                    </span>
-                  ))}
-                </div>
+        </Card.Header>
+        <Card.Body className={expanded ? '' : 'd-none'}>
+          <div>
+            <div className="row border-bottom">
+              <div className="col-4">
+                Tasks:
               </div>
-              )
-            : ''}
-          <div className="tr">
-            <div className="td">
-              References:
+              <div className="col-8">
+                {jobData.tasks.map((task, i) => (
+                  <span key={`t${i}`}>
+                    {task}
+                    <br />
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="td">
-              {jobData.references.map((ref, i) => (
-                <span key={`r${i}`}>
-                  {ref}
-                  <br />
-                </span>
-              ))}
+            {jobData.accomplishments.length > 0
+              ? (
+                <div className="row">
+                  <div className="col-4">
+                    Key Accomplishments:
+                  </div>
+                  <div className="col-8">
+                    {jobData.accomplishments.map((acc, i) => (
+                      <span key={i}>
+                        {acc}
+                        <br />
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+              : ''}
+            <div className="row">
+              <div className="col-4">
+                References:
+              </div>
+              <div className="col-8">
+                {jobData.references.map((ref, i) => (
+                  <span key={`r${i}`}>
+                    {ref}
+                    <br />
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    )
+        </Card.Body>
+      </Card>
+    );
   }
 }

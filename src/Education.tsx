@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 interface EducationItem {
   institution: string
@@ -29,16 +30,17 @@ export default function Education () {
   return (
     <div className="Education slideDown">
       {education.map((t) => (
-        <div key={t.institution} className="card">
-          <b>
+        <Card key={t.institution} className="m-3">
+          <Card.Header>
             {t.level}
             {' '}
             {t.degree}
-          </b>
+          </Card.Header>
+          <Card.Body>
           <div>{t.institution}</div>
           <div>{t.years}</div>
-          <br />
-        </div>
+          </Card.Body>
+        </Card>
       ))}
 
     </div>
