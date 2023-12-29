@@ -1,5 +1,7 @@
-import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Accordion, AccordionContext, useAccordionButton, Button, Card } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faChevronDown, faSquareArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 
 interface JobItem {
   from: string
@@ -20,8 +22,8 @@ const jobs: JobItem[] = [
   {
     from: 'March 2022',
     until: 'Now',
-    company: 'NuMat Technologies, Inc.',
-    webpage: 'http://numat-tech.com/',
+    company: 'Numat, Inc.',
+    webpage: 'https://numat.com/',
     division: 'IT',
     city: 'Skokie, IL',
     position: 'Senior Software Engineer',
@@ -110,7 +112,7 @@ const jobs: JobItem[] = [
     from: 'Sept 2007',
     until: 'Dec 2010',
     company: 'cyte',
-    webpage: 'https://www.poli.edu.co/',
+    webpage: 'https://www.cyte.co/',
     division: null,
     city: 'Bogota, Colombia',
     position: 'Software Development Leader',
@@ -137,36 +139,41 @@ export default function Experience() {
   )
 }
 
+interface CollapseProps {
+  eventKey: string,
+
+}
+
+function CollapseButton(props: CollapseProps) {
+  const { eventKey } = props;
+  const { activeEventKey } = useContext(AccordionContext);
+  const onCollapseClick = useAccordionButton(eventKey, () => {
+    console.log("Expanding / collapsing")
+  })
+  const isCurrentEventKey = activeEventKey === eventKey;
+  return (
+    <button className="btn m-1 float-end text-secondary" 
+      onClick={onCollapseClick}>
+      <FontAwesomeIcon icon={isCurrentEventKey ? faChevronUp : faChevronDown} />
+    </button>
+  )
+}
+
 interface JobProps {
   jobData: JobItem;
 }
 
-interface JobState {
-  expanded: boolean;
-}
-
-class Job extends React.Component<JobProps, JobState> {
-  constructor(props: JobProps) {
-    super(props);
-    this.flip = this.flip.bind(this);
-    this.state = { expanded: false };
-  }
-
-  flip() {
-    const { expanded } = this.state;
-    this.setState({ expanded: !expanded });
-  }
-
-  render() {
-    const { jobData } = this.props;
-    const { expanded } = this.state;
-    return (
+function Job(props: JobProps) {
+  const { jobData } = props;
+  return (
+    <Accordion defaultActiveKey="0">
       <Card className='m-3'>
         <Card.Header>
-          {jobData.company}
-          <Button className="expandButton btn-secondary btn-sm float-end" onClick={this.flip}>
-            <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
-          </Button>
+          <a href={jobData.webpage} className="link-underline link-underline-opacity-0" target="_blank" rel="noreferrer">
+            {jobData.company}
+            &nbsp;<FontAwesomeIcon icon={faSquareArrowUpRight} />
+          </a>
+          <CollapseButton eventKey="0" />
           <div>
             <b>
               {jobData.from}
@@ -180,54 +187,56 @@ class Job extends React.Component<JobProps, JobState> {
             {jobData.position}
           </div>
         </Card.Header>
-        <Card.Body className={expanded ? '' : 'd-none'}>
-          <div>
-            <div className="row border-bottom">
-              <div className="col-4">
-                Tasks:
-              </div>
-              <div className="col-8">
-                {jobData.tasks.map((task, i) => (
-                  <span key={`t${i}`}>
-                    {task}
-                    <br />
-                  </span>
-                ))}
-              </div>
-            </div>
-            {jobData.accomplishments.length > 0
-              ? (
-                <div className="row">
-                  <div className="col-4">
-                    Key Accomplishments:
-                  </div>
-                  <div className="col-8">
-                    {jobData.accomplishments.map((acc, i) => (
-                      <span key={i}>
-                        {acc}
-                        <br />
-                      </span>
-                    ))}
-                  </div>
+        <Accordion.Collapse eventKey="0">
+          <Card.Body>
+            <div>
+              <div className="row border-bottom">
+                <div className="col-4">
+                  Tasks:
                 </div>
-              )
-              : ''}
-            <div className="row">
-              <div className="col-4">
-                References:
+                <div className="col-8">
+                  {jobData.tasks.map((task, i) => (
+                    <span key={`t${i}`}>
+                      {task}
+                      <br />
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="col-8">
-                {jobData.references.map((ref, i) => (
-                  <span key={`r${i}`}>
-                    {ref}
-                    <br />
-                  </span>
-                ))}
+              {jobData.accomplishments.length > 0
+                ? (
+                  <div className="row">
+                    <div className="col-4">
+                      Key Accomplishments:
+                    </div>
+                    <div className="col-8">
+                      {jobData.accomplishments.map((acc, i) => (
+                        <span key={i}>
+                          {acc}
+                          <br />
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )
+                : ''}
+              <div className="row">
+                <div className="col-4">
+                  References:
+                </div>
+                <div className="col-8">
+                  {jobData.references.map((ref, i) => (
+                    <span key={`r${i}`}>
+                      {ref}
+                      <br />
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </Card.Body>
+          </Card.Body>
+        </Accordion.Collapse>
       </Card>
-    );
-  }
+    </Accordion>
+  );
 }
