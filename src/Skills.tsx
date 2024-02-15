@@ -4,7 +4,7 @@ import { faBug, faCode, faDatabase, faTemperature0, faTemperature1, faTemperatur
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJava, faJs, faReact, faCss3Alt } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
-import { Badge, Button, Card } from 'react-bootstrap';
+import { Badge, Card } from 'react-bootstrap';
 
 interface SkillItem {
   skill: string,
@@ -27,11 +27,11 @@ const skills: SkillItem[] = [
       { name: 'C#', level: 4 },
       { name: 'Java', level: 4, icon: faJava },
       { name: 'SQL', level: 5 },
+      { name: 'Kotlin', level: 3 },
       { name: 'C/C++', level: 3 },
       { name: 'TypeScript', level: 3 },
       { name: 'Go', level: 2 },
       { name: 'Ruby', level: 2, icon: faGem },
-      { name: 'Kotlin', level: 2 },
       { name: 'Matlab', level: 2 }
     ]
   },
@@ -51,6 +51,7 @@ const skills: SkillItem[] = [
     skill: 'Web Frameworks',
     icon: faCode,
     items: [
+      { name: 'React', level: 5, icon: faReact },
       { name: 'Django', level: 5 },
       { name: 'ASP MVC', level: 4 },
       { name: 'Node.js / Express', level: 4 },
@@ -59,17 +60,27 @@ const skills: SkillItem[] = [
     ]
   },
   {
+    skill: 'Other Skills',
+    icon: faToolbox,
+    items: [
+      { name: 'Mentoring', level: 5 },
+      { name: 'Requirements / Specs', level: 5 },
+      { name: 'Full Stack', level: 5 },
+      { name: 'Dev Ops.', level: 5 },
+      { name: 'Data Arch.', level: 4 },
+      { name: 'Prompt Engineering', level: 4 },
+    ]
+  },
+  {
     skill: 'Miscellaneous',
     icon: faToolbox,
     items: [
-      { name: 'React', level: 5, icon: faReact },
       { name: 'CSS', level: 4, icon: faCss3Alt },
-      { name: 'Prompt Engineering', level: 4 },
       { name: 'JQuery', level: 4 },
       { name: 'Docker / Swarm', level: 4 },
       { name: 'Git', level: 3 },
       { name: 'Bash', level: 2, icon: faTerminal },
-      
+      { name: 'PowerShell', level: 2, icon: faTerminal },   
     ]
   }
 ]
@@ -115,10 +126,6 @@ class SkillClass extends React.Component<SkillProps, SkillState> {
         <Card.Header onClick={this.flip}>
           {skillData.icon ? <><FontAwesomeIcon icon={skillData.icon} />&emsp;</> : ''}
           {skillData.skill}
-          &emsp;
-          <Button className="expandButton  btn-secondary btn-sm float-end">
-            <div>{expanded ? <span>&#8854;</span> : <span>&#10023;</span>}</div>
-          </Button>
         </Card.Header>
         <Card.Body>
           <div className={expanded ? 'items expanded' : 'items collapsed'}>
