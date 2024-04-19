@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import {
   faBug, faCode, faDatabase, faTemperature0, faTemperature1, faTemperature2, faTemperature3, faTemperature4, faToolbox,
-  faGem, IconDefinition, faTerminal, faHammer
+  faGem, IconDefinition, faTerminal, faHammer, faPaintRoller
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJava, faJs, faReact, faCss3Alt, faLinux } from '@fortawesome/free-brands-svg-icons';
@@ -70,6 +70,7 @@ const skills: SkillItem[] = [
       { name: 'Requirements / Specs', level: 5 },
       { name: 'Full Stack', level: 5 },
       { name: 'Dev Ops.', level: 5 },
+      { name: 'HCI / UI / UX', level: 5, icon: faPaintRoller},
       { name: 'Data Arch.', level: 4 },
       { name: 'Prompt Engineering', level: 4 },
     ]

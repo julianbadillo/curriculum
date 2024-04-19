@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAward, faBuildingColumns, faLaptopCode, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { Routes, Route, Outlet, Link, useLocation } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 interface AppState {
   // to know which component to display
@@ -42,24 +43,24 @@ class App extends React.Component<unknown, AppState> {
       <Container className="App">
         <PageHead />
         <Container>
-          <Row className="pb-3 pt-3 text-center">
-            <Col>
-              <Link className="btn btn-secondary" to="/skills">
+          <Row className="pt-3 text-center">
+            <Col xs={6} xl={3} className="pb-3">
+              <Link className="btn btn-secondary w-100" to="/skills">
                 <FontAwesomeIcon icon={faLaptopCode} />&nbsp;<span>Skills</span>
               </Link>
             </Col>
-            <Col>
-              <Link className="btn btn-secondary" to="/experience">
+            <Col xs={6} xl={3} className="pb-3">
+              <Link className="btn btn-secondary w-100" to="/experience">
                 <FontAwesomeIcon icon={faBuildingColumns} />&nbsp;<span>Experience</span>
               </Link>
             </Col>
-            <Col>
-              <Link className="btn btn-secondary" to="/education">
+            <Col xs={6} xl={3} className="pb-3">
+              <Link className="btn btn-secondary w-100" to="/education">
                 <FontAwesomeIcon icon={faUserGraduate} />&nbsp;<span>Education</span>
               </Link>
             </Col>
-            <Col>
-              <Link className="btn btn-secondary" to="/awards">
+            <Col xs={6} xl={3} className="pb-3">
+              <Link className="btn btn-secondary w-100" to="/awards">
                 <FontAwesomeIcon icon={faAward} />&nbsp;<span>Awards</span>
               </Link>
             </Col>
@@ -69,7 +70,9 @@ class App extends React.Component<unknown, AppState> {
         <LocationProvider>
           <AnimatedRoutes />
         </LocationProvider>
-        <Row><Footer /></Row>
+        <Row className="Footer p-5">
+          <Footer />
+        </Row>
       </Container>
     );
   }
@@ -80,14 +83,14 @@ class App extends React.Component<unknown, AppState> {
  */
 function PageHead() {
   return (
-    <Row className='p-3 text-center'>
-      <Col className='text-start'>
+    <Row className='pt-3 ps-3 pe-3 pb-0 text-center'>
+      <Col xs={10} lg={9} className='text-start'>
         <h1>Julian Badillo</h1>
         <h2>Software Engineer</h2>
         <p>A successful day: when someone is grateful I&lsquo;m working by their side.</p>
       </Col>
-      <Col className='text-end'>
-        <img className="logo-dark" src="jblight.svg" alt="jb" />
+      <Col xs={2} lg={3} className='text-end'>
+        <img className="logo-dark w-100" src="jblight.svg" alt="jb" />
       </Col>
       <div className='position-absolute top-0 end-0 m-2 m-md-4'>
         <ThemeToggle />
@@ -130,25 +133,23 @@ function AnimatedRoutes() {
  */
 function Footer() {
   return (
-    <Row className="Footer p-5">
-      <div className='d-flex justify-content-center'>
-        <div>
-          <a href="https://www.linkedin.com/in/juli4nb4dillo/" title='LinkedIn'>
-            <img src="inlight.svg" alt="Linked In" className="ImgLight" />
-          </a>
-        </div>
-        <div>
-          <a href="https://github.com/julianbadillo" title='Personal GitHub'>
-            <img src="githublight.svg" alt="GitHub" className="ImgLight" />
-          </a>
-        </div>
-        <div>
-          <a href="https://github.com/juli4nb4dillo" title='Corporate GitHub'>
-            <img src="githublight.svg" alt="GitHub" className="ImgLight" />
-          </a>
-        </div>
+    <div className='d-flex justify-content-center fs-4 text-secondary'>
+      <div>
+        <a className='text-secondary' href="https://www.linkedin.com/in/juli4nb4dillo/" title='LinkedIn' target='_blank' rel='noreferrer'>
+          <FontAwesomeIcon icon={faLinkedin} />
+        </a>
       </div>
-    </Row>
+      <div>
+        <a className='text-secondary' href="https://github.com/julianbadillo" title='Personal GitHub' target='_blank' rel='noreferrer'>
+          <FontAwesomeIcon icon={faGithub} />
+        </a>
+      </div>
+      <div>
+        <a className='text-secondary' href="https://github.com/juli4nb4dillo" title='Corporate GitHub' target='_blank' rel='noreferrer'>
+          <FontAwesomeIcon icon={faGithub} />
+        </a>
+      </div>
+    </div>
   );
 }
 
