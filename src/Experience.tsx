@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Accordion, AccordionContext, useAccordionButton, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faSquareArrowUpRight } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
+import { routeVariants } from './animation';
 
 interface JobItem {
   from: string
@@ -133,9 +135,12 @@ const jobs: JobItem[] = [
  */
 export default function Experience() {
   return (
-    <div className="Experience slideDown">
+    <motion.div className="Experience"
+      variants={routeVariants}
+      initial="initial"
+      animate="final">
       {jobs.map((job, i) => <Job jobData={job} key={i} />)}
-    </div>
+    </motion.div>
   )
 }
 
@@ -152,7 +157,7 @@ function CollapseButton(props: CollapseProps) {
   })
   const isCurrentEventKey = activeEventKey === eventKey;
   return (
-    <button className="btn m-1 float-end text-secondary" 
+    <button className="btn m-1 float-end text-secondary"
       onClick={onCollapseClick}>
       <FontAwesomeIcon icon={isCurrentEventKey ? faChevronUp : faChevronDown} />
     </button>

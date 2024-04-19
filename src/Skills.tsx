@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
-import { faBug, faCode, faDatabase, faTemperature0, faTemperature1, faTemperature2, faTemperature3, faTemperature4, faToolbox,
-  faGem, IconDefinition, faTerminal } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBug, faCode, faDatabase, faTemperature0, faTemperature1, faTemperature2, faTemperature3, faTemperature4, faToolbox,
+  faGem, IconDefinition, faTerminal, faHammer
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPython, faJava, faJs, faReact, faCss3Alt } from '@fortawesome/free-brands-svg-icons';
+import { faPython, faJava, faJs, faReact, faCss3Alt, faLinux } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
 import { Badge, Card } from 'react-bootstrap';
-
+import { motion } from 'framer-motion';
+import { routeVariants } from './animation';
 interface SkillItem {
   skill: string,
   icon?: IconDefinition,
@@ -73,23 +76,24 @@ const skills: SkillItem[] = [
   },
   {
     skill: 'Miscellaneous',
-    icon: faToolbox,
+    icon: faHammer,
     items: [
       { name: 'CSS', level: 4, icon: faCss3Alt },
       { name: 'JQuery', level: 4 },
       { name: 'Docker / Swarm', level: 4 },
       { name: 'Git', level: 3 },
+      { name: 'Unix / Linux', level: 3, icon: faLinux },
       { name: 'Bash', level: 2, icon: faTerminal },
-      { name: 'PowerShell', level: 2, icon: faTerminal },   
+      { name: 'PowerShell', level: 2, icon: faTerminal },
     ]
   }
 ]
 
 export default function Skills() {
   return (
-    <div className="Skills slideDown">
+    <motion.div variants={routeVariants} initial="initial" animate="final" className="Skills slideDown">
       {skills.map((skill) => <SkillClass skillData={skill} key={skill.skill} />)}
-    </div>
+    </motion.div>
   )
 }
 
@@ -98,52 +102,34 @@ interface SkillProps {
   key: string
 }
 
-interface SkillState {
-  expanded: boolean
-}
-
 /**
  * Skill class
  *
  */
-class SkillClass extends React.Component<SkillProps, SkillState> {
-  constructor(props: SkillProps) {
-    super(props)
-    this.flip = this.flip.bind(this)
-    this.state = { expanded: false }
-  }
-
-  flip() {
-    const { expanded } = this.state
-    this.setState({ expanded: !expanded })
-  }
-
-  render() {
-    const { skillData } = this.props
-    const { expanded } = this.state
-    return (
-      <Card className='m-3'>
-        <Card.Header onClick={this.flip}>
-          {skillData.icon ? <><FontAwesomeIcon icon={skillData.icon} />&emsp;</> : ''}
-          {skillData.skill}
-        </Card.Header>
-        <Card.Body>
-          <div className={expanded ? 'items expanded' : 'items collapsed'}>
-            {skillData.items.map((m) => (
-              <Badge className="item bg-secondary m-1 p-2" key={m.name}>
-                {m.icon ? <><FontAwesomeIcon icon={m.icon} />&nbsp;</> : ''}
-                {m.name}
-                &nbsp;
-                <Temp n={m.level} />
-                {' '}
-              </Badge>
-            ))}
-          </div>
-        </Card.Body>
-      </Card>
-    )
-  }
+function SkillClass({ skillData }: SkillProps): JSX.Element {
+  return (
+    <Card className='m-3'>
+      <Card.Header>
+        {skillData.icon ? <><FontAwesomeIcon icon={skillData.icon} />&emsp;</> : ''}
+        {skillData.skill}
+      </Card.Header>
+      <Card.Body>
+        <div>
+          {skillData.items.map((m) => (
+            <Badge className="item bg-secondary m-1 p-2" key={m.name}>
+              {m.icon ? <><FontAwesomeIcon icon={m.icon} />&nbsp;</> : ''}
+              {m.name}
+              &nbsp;
+              <Temp n={m.level} />
+              {' '}
+            </Badge>
+          ))}
+        </div>
+      </Card.Body>
+    </Card>
+  )
 }
+
 
 interface StarProps {
   n: number

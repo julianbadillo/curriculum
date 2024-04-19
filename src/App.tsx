@@ -9,7 +9,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import ThemeToggle from './ThemeToggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAward, faBuildingColumns, faLaptopCode, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet, Link, useLocation } from "react-router-dom";
+import { AnimatePresence } from 'framer-motion';
 
 interface AppState {
   // to know which component to display
@@ -43,8 +44,8 @@ class App extends React.Component<unknown, AppState> {
         <Container>
           <Row className="pb-3 pt-3 text-center">
             <Col>
-              <Link className="btn btn-secondary" to="/education">
-                <FontAwesomeIcon icon={faUserGraduate} />&nbsp;<span>Education</span>
+              <Link className="btn btn-secondary" to="/skills">
+                <FontAwesomeIcon icon={faLaptopCode} />&nbsp;<span>Skills</span>
               </Link>
             </Col>
             <Col>
@@ -53,8 +54,8 @@ class App extends React.Component<unknown, AppState> {
               </Link>
             </Col>
             <Col>
-              <Link className="btn btn-secondary" to="/skills">
-                <FontAwesomeIcon icon={faLaptopCode} />&nbsp;<span>Skills</span>
+              <Link className="btn btn-secondary" to="/education">
+                <FontAwesomeIcon icon={faUserGraduate} />&nbsp;<span>Education</span>
               </Link>
             </Col>
             <Col>
@@ -65,12 +66,9 @@ class App extends React.Component<unknown, AppState> {
           </Row>
         </Container>
         <Row className="pt-2"><Outlet /></Row>
-        <Routes>
-          <Route path="experience" element={<Experience />} />
-          <Route path="education" element={<Education />} />
-          <Route path="skills" element={<Skills />} />
-          <Route path="awards" element={<Awards />} />
-        </Routes>
+        <LocationProvider>
+          <AnimatedRoutes />
+        </LocationProvider>
         <Row><Footer /></Row>
       </Container>
     );
@@ -95,6 +93,35 @@ function PageHead() {
         <ThemeToggle />
       </div>
     </Row>
+  );
+}
+
+/**
+ * Wrapper for the location provider
+ * @param param0 
+ * @returns 
+ */
+function LocationProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <AnimatePresence>
+      {children}
+    </AnimatePresence>
+  )
+}
+
+/**
+ * Routes with animation - explicitly extracted so we can use location.
+ * @returns 
+ */
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <Routes location={location} key={location.key}>
+      <Route path="skills" element={<Skills />} />
+      <Route path="experience" element={<Experience />} />
+      <Route path="education" element={<Education />} />
+      <Route path="awards" element={<Awards />} />
+    </Routes>
   );
 }
 
@@ -124,5 +151,6 @@ function Footer() {
     </Row>
   );
 }
+
 
 export default App;

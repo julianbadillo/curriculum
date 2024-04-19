@@ -1,5 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
+import { motion } from 'framer-motion'
+import { routeVariants } from './animation'
 
 interface EducationItem {
   institution: string
@@ -26,9 +28,13 @@ const education: EducationItem[] = [
   }
 ]
 
-export default function Education () {
+export default function Education() {
   return (
-    <div className="Education slideDown">
+    <motion.div
+      className="Education slideDown"
+      variants={routeVariants}
+      initial="initial"
+      animate="final">
       {education.map((t) => (
         <Card key={t.institution} className="m-3">
           <Card.Header>
@@ -37,12 +43,12 @@ export default function Education () {
             {t.degree}
           </Card.Header>
           <Card.Body>
-          <div>{t.institution}</div>
-          <div>{t.years}</div>
+            <div>{t.institution}</div>
+            <div>{t.years}</div>
           </Card.Body>
         </Card>
       ))}
 
-    </div>
+    </motion.div>
   )
 }

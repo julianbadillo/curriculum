@@ -2,7 +2,8 @@ import { faMedal } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Card } from 'react-bootstrap'
-
+import { motion } from 'framer-motion'
+import { routeVariants } from './animation'
 interface AwardItem {
   year: number
   name: string
@@ -18,14 +19,18 @@ const awards: AwardItem[] = [
   { year: 2002, name: '“Andres Bello” award to top-100 National Highschool Exam (ICFES)' }
 ]
 
-export default function Awards () {
+export default function Awards() {
   return (
-    <div className="Awards slideDown">
+    <motion.div
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+      className="Awards slideDown">
       {awards.map((a) => (
         <Card key={a.name} className="card m-3">
           <Card.Header><FontAwesomeIcon icon={faMedal} /> {a.year}: {a.name}</Card.Header>
         </Card>
       ))}
-    </div>
+    </motion.div>
   )
 }
