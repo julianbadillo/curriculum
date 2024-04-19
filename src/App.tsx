@@ -42,7 +42,7 @@ class App extends React.Component<unknown, AppState> {
     return (
       <Container className="App">
         <PageHead />
-        <Container>
+        <Container className="position-sticky sticky-top menu">
           <Row className="pt-3 text-center">
             <Col xs={6} xl={3} className="pb-3">
               <Link className="btn btn-secondary w-100" to="/skills">
@@ -83,14 +83,14 @@ class App extends React.Component<unknown, AppState> {
  */
 function PageHead() {
   return (
-    <Row className='pt-3 ps-3 pe-3 pb-0 text-center'>
+    <Row className='pt-3 px-3 pb-0 text-center'>
       <Col xs={10} lg={9} className='text-start'>
         <h1>Julian Badillo</h1>
         <h2>Software Engineer</h2>
         <p>A successful day: when someone is grateful I&lsquo;m working by their side.</p>
       </Col>
       <Col xs={2} lg={3} className='text-end'>
-        <img className="logo-dark w-100" src="jblight.svg" alt="jb" />
+        <img className="logo-dark w-100 pt-4" src="jblight.svg" alt="jb" />
       </Col>
       <div className='position-absolute top-0 end-0 m-2 m-md-4'>
         <ThemeToggle />

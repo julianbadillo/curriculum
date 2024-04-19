@@ -14,3 +14,7 @@ body {
 .Footer svg {
     width: 2em;
 }
+.menu {
+    background-color: inherit;
+    backdrop-filter: blur(5px);
+}
