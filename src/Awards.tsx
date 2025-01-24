@@ -10,6 +10,7 @@ interface AwardItem {
 }
 
 const awards: AwardItem[] = [
+  { year: 2024, name: 'Numat - CEO Excellence Award' },
   { year: 2018, name: 'Fermilab - Exceptional Performance Recognition Award' },
   { year: 2009, name: 'Honors Degree “Cum Laude” on Master studies. GPA 4.9/5.0' },
   { year: 2007, name: 'Honors Degree “Magna Cum Laude” on Bachelor studies. GPA 4.6/5.0' },
