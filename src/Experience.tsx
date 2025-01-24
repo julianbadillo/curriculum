@@ -29,7 +29,7 @@ const jobs: JobItem[] = [
     division: 'IT',
     city: 'Skokie, IL',
     position: 'Senior Software Engineer',
-    references: ['Patrick Fuller pat@numat-tech.com', 'Paul Boone paul.boone@numat-tech.com'],
+    references: ['Paul Boone paul.boone@numat.com'],
     keywords: ['web developer', 'fullstack', 'Django', 'Python', 'Azure Pipelines'],
     tasks: [
       'Maintain software for chemical research and processing',
@@ -44,7 +44,7 @@ const jobs: JobItem[] = [
   {
     from: 'Jan 2021',
     until: 'Feb 2022',
-    company: 'Fermi National Accelerator Laboratory (Fermilab)',
+    company: 'Fermilab',
     webpage: 'http://fnal.gov/',
     division: 'Accelerator Division',
     city: 'Batavia, IL',
@@ -61,7 +61,7 @@ const jobs: JobItem[] = [
   {
     from: 'Jan 2016',
     until: 'Dec 2020',
-    company: 'Fermi National Accelerator Laboratory (Fermilab)',
+    company: 'Fermilab',
     webpage: 'http://fnal.gov/',
     division: 'Office of Project Support Services',
     city: 'Batavia, IL',
@@ -77,7 +77,7 @@ const jobs: JobItem[] = [
   {
     from: 'Sept 2013',
     until: 'Dec 2015',
-    company: 'European Organization for Nuclear Research (CERN)',
+    company: 'CERN',
     webpage: 'http://home.web.cern.ch/',
     division: 'CMS Experiment - Computing Operations',
     city: 'Geneva, Switzerland',
