@@ -1,0 +1,162 @@
+main {
+    /* width: 100%; */
+}
+main > .Header {
+    min-height: 10em;
+    border: 1px solid red;
+}
+
+.topRightButtons {
+    position: absolute;
+    right: 0;
+    border: 1px solid blue;
+    padding: 1em;
+}
+
+.topContainer {
+    display: grid;
+    grid-template-columns: minmax(400px, 45%) 1fr;
+    /* flex: 3 1 450px; */
+    /* border: 1px solid wheat; */
+}
+.Name {
+    padding: 30px;
+    font-size:200%;
+    font-weight: 500;
+}
+.Title {
+    padding: 30px;
+    font-size:120%;
+    font-weight: 300;
+}
+
+div {
+    /* border: 1px solid silver; */
+}
+a {
+    color: inherit;
+}
+
+h2 {
+    margin-left: 1em;
+}
+
+
+.FullStack {
+    display: grid;
+    min-width: 200px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    
+}
+
+.FullStack > div {
+    text-align: center;
+    place-content: center;
+    /* border: 1px solid silver; */
+    background-color: #333;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.SearchBar {
+    padding-top: 2em;
+    display: flex;
+    place-items: center;
+}
+
+.SearchBar > input {
+    width: 100%;
+    padding: 0.5em 0.5em 0.5em 2em;
+    font-size:120%;
+    font-weight: 300;
+    border: 0;
+    border-radius: 1em;
+}
+
+.SearchBar > svg.terminalIcon {
+    position: relative;
+    left: 0;
+    transform: translate(40px, 0px);
+}
+
+.SearchBar > svg.searchIcon {
+    position: relative;
+    right: 0;
+    transform: translate(-40px, 0px);
+}
+
+.Card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.Card > .CardHeader {
+    padding: 0.5em 0.5em 0.5em 1.5em;
+    margin-top: 0.5em;
+    font-size:110%;
+    font-weight: 500;
+    /* border: 1px solid gray; */
+    background-color: #333;
+    border-radius: 1em;
+}
+
+.Card > .CardBody {
+    padding: 0.5em 0.5em 0.5em 1.5em;
+    margin-top: 0.5em;
+    font-size:100%;
+    font-weight: 500;
+    /* border: 1px solid gray; */
+    background-color: #333;
+    border-radius: 1em;
+}
+
+ul.Bullet {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+ul.Bullet > li {
+    background-color: #444;
+    padding: 0.2em 0.7em 0.2em 0.8em;
+
+    border-radius: 0.6em;
+    margin-left: 0;
+    margin-right: 0.2em;
+}
+
+.ExperienceContent {
+    /*TODO two columns*/
+    /* display: grid;    
+    grid-template-columns: minmax(10em, 45%) 1fr; */
+}
+
+.ExperienceContent > div {
+    /* border: 1px solid red; */
+}
+
+.ExperienceStack {
+
+}
+
+.ExperienceStack > div {
+    display: flex;
+    background-color: #222;
+    border-radius: 1em;
+    margin: 5px;
+}
+
+
+
+.blinking {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

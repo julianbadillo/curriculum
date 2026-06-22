@@ -1,0 +1,132 @@
+[
+  {
+    "from": "March 2022",
+    "until": "Now",
+    "company": "Numat, Inc.",
+    "webpage": "https://numat.com/",
+    "division": "Data Engineering",
+    "city": "Skokie, IL",
+    "position": "Senior Software Engineer",
+    "references": ["Paul Boone paul.boone@numat.com"],
+    "keywords": ["web developer", "fullstack", "Django", "Python", "Docker", "REST API", "Data Engineering"],
+    "tasks": [
+      "Maintain software for chemical research and processing",
+      "REST API integration of R&D solutions"
+    ],
+    "accomplishments": [
+      "Implementation of DBT dataworkflows and Snowflake Data-Lake",
+      "Integration of E-Lab Notebook, Chemical Inventory and Laboratory systems.",
+      "Implementation of a Company Portal for internal use.",
+      "Refactoring and testing of legacy code."],
+    "tech":{
+      "frontend": ["HTML/CSS", "ReactJS", "Jinja", "Django", "JavaScript", "TypeScript"],
+      "backend": ["Django", "Express", "REST API", "Ubuntu"],
+      "databases": ["PostgreSQL", "MongoDB", "Snowflake", "DBT", "Azure Cloud"],
+      "devops": ["Git", "GitHub Actions", "Docker", "Swarm"]
+    }
+  },
+  {
+    "from": "Jan 2021",
+    "until": "Feb 2022",
+    "company": "Fermilab",
+    "webpage": "http://fnal.gov/",
+    "division": "Accelerator Division",
+    "city": "Batavia, IL",
+    "position": "Applications Developer & Systems Analyst",
+    "references": ["Erik Gottschalk egottschalk@fnal.gov"],
+    "keywords": ["web developer", "fullstack", "React", "Node.js", "GraphQL"],
+    "tasks": ["Use case analysis for accelerator controls modernization.",
+      "Develop software for accelerator controls."],
+    "accomplishments": ["Use cases and functional requirements for new control system.",
+      "Refurbish of physical key inventory tracking tool."],
+    "tech":{
+      "frontend": ["HTML/CSS", "ReactJS", "JavaScript", "TypeScript"],
+      "backend": ["Express", "REST API", "CentOS"],
+      "databases": ["MySQL"],
+      "devops": ["Git", "GitHub Actions", "Docker"]
+    }
+  },
+  {
+    "from": "Jan 2016",
+    "until": "Dec 2020",
+    "company": "Fermilab",
+    "webpage": "http://fnal.gov/",
+    "division": "Office of Project Support Services",
+    "city": "Batavia, IL",
+    "position": "Applications Developer",
+    "references": ["Richard Marcum rmarcum@fnal.gov"],
+    "keywords": ["web developer", "fullstack", "ASP.Net", "MVC", "Razor", "SQLServer", "project controls", "EVMS"],
+    "tasks": ["Design and build full-stack web tools for the projects office.",
+      "Support and maintain existing software tools."],
+    "accomplishments": ["Refactoring and design from scratch of three web tools: fBCR, CAMeToolbox, RAPTR, that automated and improved intensive manual tasks of project controls.",
+      "Exceptional Performance Recognition Award (2018)"],
+    "tech":{
+      "frontend": ["HTML/CSS", "Razor", "JavaScript"],
+      "backend": ["ASP.Net", "MVC", "REST API", "C#"],
+      "databases": ["SQLServer"],
+      "devops": ["MS Team Foundation"]
+    }
+  },
+  {
+    "from": "Sept 2013",
+    "until": "Dec 2015",
+    "company": "CERN",
+    "webpage": "http://home.web.cern.ch/",
+    "division": "CMS Experiment - Computing Operations",
+    "city": "Geneva, Switzerland",
+    "position": "Workflow Team Leader",
+    "references": ["Oliver Gustche gutsche@fnal.gov,  gutsche@cern.ch",
+      "Maria Girone maria.girone@cern.ch"],
+    "keywords": ["devops", "grid", "python", "bash", "linux", "oracle", "large scale", "condor", "couchdb"],
+    "tasks": ["DevOps of Monte Carlo simulation workflows on the CMS Grid.",
+      "Debugging / troubleshooting on Linux/Python grid platform."],
+    "accomplishments": ["Performance optimization on several operational tools.",
+      "Automation of manual tasks that were laborious for operators and error-prone.",
+      "Tide-up, maintenance and documentation of legacy operations code."],
+    "tech":{
+      "frontend": ["HTML/CSS", "JavaScript"],
+      "backend": ["Python",  "Bash", "Linux SE"],
+      "databases": ["Oracle DB", "CounchDB", "MariaDB"],
+      "devops": ["Puppet"]
+    }
+  },
+  {
+    "from": "Jan 2011",
+    "until": "Jul 2013",
+    "company": "Politecnico Grancolombiano",
+    "webpage": "https://www.poli.edu.co/",
+    "division": "Facultad de Ingenieria",
+    "city": "Bogota, Colombia",
+    "position": "Teacher",
+    "references": ["Rafael García, rgarcia@poli.edu.co"],
+    "keywords": ["teaching", "maths", "algorithms", "java", "cryptography", "distributed", "programming"],
+    "tasks": ["Algorithm analysis and correction.",
+      "Logics and Maths for Computing Science",
+      "Programming in Java",
+      "Distributed systems", "Cryptography"],
+    "accomplishments": ["Systems Engineering's best teacher award, rated by students.",
+      "Design of graduate degree in information security."]
+  },
+  {
+    "from": "Sept 2007",
+    "until": "Dec 2010",
+    "company": "cyte",
+    "webpage": "https://www.cyte.co/",
+    "division": null,
+    "city": "Bogota, Colombia",
+    "position": "Software Development Leader",
+    "references": ["Milton Quiroga, mquiroga@cyte.co"],
+    "keywords": ["security", "cryptography", "pki", "digital signatures", "software", "java", "information security", "j2ee", "consulting"],
+    "tasks": ["Design, develop and support software applications intended to secure our client's information.",
+      "Provide expertise in consulting projects about information security, awareness, information classifying, business continuity planning and information technology risk analysis."],
+    "accomplishments": ["Refactoring and improvement of the company's cryptographic products",
+      "Design of new products based on client's needs.",
+      "Leading security-related consulting."],
+    "skills": ["SQLServer", "JavaEE", "Javascript"],
+    "tech":{
+      "frontend": ["HTML/CSS", "JavaScript"],
+      "backend": ["JavaEE", "C#", "ASP.Net", "JBoss"],
+      "databases": ["Oracle DB", "SQLServer", "PostgreSQL"]
+    }
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "numatceo",
+    "year": 2024,
+    "name": "Numat - CEO Excellence Award"
+  },
+  {
+    "id": "fnalperf",
+    "year": 2018,
+    "name": "Fermilab - Exceptional Performance Recognition Award"
+  },
+  {
+    "id": "macumlaude",
+    "year": 2009,
+    "name": "Honors Degree “Cum Laude” on Master studies. GPA 4.9/5.0"
+  },
+  {
+    "id": "bdcumlaude",
+    "year": 2007,
+    "name": "Honors Degree “Magna Cum Laude” on Bachelor studies. GPA 4.6/5.0"
+  },
+  {
+    "id": "ecaes",
+    "year": 2006,
+    "name": "Top-five score on National Exam (ECAES) for Systems Engineering"
+  },
+  {
+    "id": "icpc",
+    "year": 2006,
+    "name": "2nd place on ACM International Collegiate Programming Contest - South America"
+  },
+  {
+    "id": "highschool",
+    "year": 2002,
+    "name": "Honors Degree “Best year student” and “Highest ICFES score” on Highschool"
+  },
+  {
+    "id": "icfes",
+    "year": 2002,
+    "name": "“Andres Bello” award to top-100 National Highschool Exam (ICFES)"
+  }
+]

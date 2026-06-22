@@ -1,20 +1,41 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 200;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  font-size: larger;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-    /* font-family: 'Roboto', sans-serif; */
-    /* font-family: 'Poppins', sans-serif; */
-    font-family: "neue-kabel",sans-serif;
-}
-.logo, .logo-dark {
-    width: 10em;
-}
-
-.App {
-    max-width: 42em !important;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
-.Footer svg {
-    width: 2em;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
-.menu {
-    background-color: inherit;
-    backdrop-filter: blur(5px);
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 }

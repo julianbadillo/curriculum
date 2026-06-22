@@ -1,0 +1,184 @@
+[
+  {
+    "skill": "Front-End",
+    "icon": "faHammer",
+    "items": [
+      {
+        "name": "HTML/CSS",
+        "level": 4,
+        "icon": "faCss3Alt"
+      },
+      
+      {
+        "name": "JQuery",
+        "level": 4
+      },
+      {
+        "name": "React",
+        "level": 5,
+        "icon": "faReact"
+      },
+      {
+        "name": "HCI / UI / UX",
+        "level": 5,
+        "icon": "faPaintRoller"
+      },
+      {
+        "name": "Jinja",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "skill": "Back-End",
+    "icon": "faCode",
+    "items": [
+      {
+        "name": "Django",
+        "level": 5
+      },
+      {
+        "name": "ASP MVC",
+        "level": 4
+      },
+      {
+        "name": "Node.js / Express",
+        "level": 4
+      },
+      {
+        "name": "JEE",
+        "level": 2,
+        "icon": "faJava"
+      },
+      {
+        "name": "Ruby on Rails",
+        "level": 2,
+        "icon": "faGem"
+      }
+    ]
+  },
+  {
+    "skill": "Databases",
+    "icon": "faDatabase",
+    "items": [
+      {
+        "name": "Snowflake",
+        "level": 5,
+        "icon": "faSnowflake"
+      },
+      {
+        "name": "PostgreSQL",
+        "level": 5,
+        "icon": "faPostgresql"
+      },
+      {
+        "name": "SQL Sever",
+        "level": 5
+      },
+      {
+        "name": "Oracle DB",
+        "level": 4
+      },
+      {
+        "name": "MySql/MariaDB",
+        "level": 3
+      },
+      {
+        "name": "MongoDB",
+        "level": 3
+      },
+      {
+        "name": "LiteDB",
+        "level": 3
+      }
+    ]
+  },
+  {
+    "skill": "Dev-Ops",
+    "icon": "faToolbox",
+    "items": [
+      {
+        "name": "Docker / Swarm",
+        "level": 4,
+        "icon": "faDocker"
+      },
+      {
+        "name": "Git",
+        "level": 3,
+        "icon": "faGitAlt"
+      },
+      {
+        "name": "Unix / Linux",
+        "level": 3,
+        "icon": "faLinux"
+      },
+      {
+        "name": "Bash",
+        "level": 2,
+        "icon": "faTerminal"
+      },
+      {
+        "name": "PowerShell",
+        "level": 2,
+        "icon": "faTerminal"
+      }
+    ]
+  },
+  {
+    "skill": "Miscellaneous",
+    "icon": "faHammer",
+    "items": [
+      {
+        "name": "Mentoring",
+        "level": 5
+      },
+      {
+        "name": "Requirements / Specs",
+        "level": 5
+      },
+      {
+        "name": "Data Arch.",
+        "level": 4
+      },
+      {
+        "name": "Prompt Engineering",
+        "level": 4
+      },
+      {
+        "name": "Claude Code",
+        "level": 4
+      },
+      {
+        "name": "Python",
+        "level": 4,
+        "icon": "faPython"
+      },
+      
+      {
+        "name": "C#",
+        "level": 4
+      },
+      {
+        "name": "Kotlin",
+        "level": 3
+      },
+      {
+        "name": "TypeScript",
+        "level": 3
+      },
+      {
+        "name": "Go",
+        "level": 2
+      },
+      {
+        "name": "Ruby",
+        "level": 2,
+        "icon": "faGem"
+      },
+      {
+        "name": "Matlab",
+        "level": 2
+      }
+    ]
+  }
+]
